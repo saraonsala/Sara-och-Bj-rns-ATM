@@ -98,12 +98,12 @@ public class cardHolder
         //Check if the user has enough money
         if(currentUser.getBalance() < withdrawal)
         {
-            System.Console.WriteLine("Insufficient balance :");
+            Console.WriteLine("Insufficient balance :");
         }
         else
         {
             currentUser.setBalance(currentUser.getBalance() -withdrawal);
-            System.Console.WriteLine("You´re good to go! Thank you : ");
+            Console.WriteLine("You´re good to go! Thank you : ");
         }
         }
 
