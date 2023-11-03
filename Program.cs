@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace Sara_ATM;
+
 
 public class cardHolder 
 {
@@ -10,11 +11,11 @@ public class cardHolder
     String lastName;
     double balance;
 
-    public cardHolder(string cardNum, int pin, string firstNamne, string lastName, double balance)
+    public cardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
         this.cardNum = cardNum;
         this.pin = pin;
-        this.firstName = firstNamne;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.balance = balance;
     }
@@ -43,9 +44,9 @@ public class cardHolder
     {
         return balance;
     }
-    public void setCardNum(string newcardNum)
+    public void setCardNum(string newCardNum)
     {
-        cardNum =newcardNum;
+        cardNum =newCardNum;
     }
 
     public void setPin(int newPin)
@@ -83,27 +84,27 @@ public class cardHolder
 
         void deposit(cardHolder currentUser)
         {
-            System.Console.WriteLine("How mutch $$ would you like to deposit: ? ");
+            Console.WriteLine("How mutch $$ would you like to deposit: ? ");
             double deposit = Double.Parse(Console.ReadLine());
-            currentUser.setBalance(+ deposit);
-            System.Console.WriteLine("Thank you for you $$. Your new balance is: " + currentUser.getBalance());
+            currentUser.setBalance(currentUser.getBalance() + deposit);
+            Console.WriteLine("Thank you for you $$. Your new balance is: " + currentUser.getBalance());
 
         }
         
         void withdraw(cardHolder currentUser)
         {
-          System.Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
-          double withdrawal = Double.Parse(Console.ReadLine());
-          //Check if the user has enough money
-          if(currentUser.getBalance() < withdrawal)
-          {
+        System.Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
+        double withdrawal = Double.Parse(Console.ReadLine());
+        //Check if the user has enough money
+        if(currentUser.getBalance() < withdrawal)
+        {
             System.Console.WriteLine("Insufficient balance :");
-          }
-          else
-          {
+        }
+        else
+        {
             currentUser.setBalance(currentUser.getBalance() -withdrawal);
             System.Console.WriteLine("You´re good to go! Thank you : ");
-          }
+        }
         }
 
         void balance(cardHolder currentUser)
@@ -179,6 +180,7 @@ public class cardHolder
     }
 
 }
+
 
 
 
