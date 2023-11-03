@@ -46,7 +46,7 @@ public class cardHolder
     }
     public void setCardNum(string newCardNum)
     {
-        cardNum =newCardNum;
+        cardNum = newCardNum;
     }
 
     public void setPin(int newPin)
@@ -69,6 +69,7 @@ public class cardHolder
         balance = newBalance;
     }
 
+    
     public static void Main(String[]args)
     {
         void printOptions()
@@ -86,30 +87,30 @@ public class cardHolder
         {
             Console.WriteLine("How mutch $$ would you like to deposit: ? ");
             double deposit = Double.Parse(Console.ReadLine());
-            currentUser.setBalance(currentUser.getBalance() + deposit);
+            currentUser.setBalance(currentUser.getBalance() +deposit); 
             Console.WriteLine("Thank you for you $$. Your new balance is: " + currentUser.getBalance());
 
         }
         
         void withdraw(cardHolder currentUser)
         {
-        System.Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
-        double withdrawal = Double.Parse(Console.ReadLine());
-        //Check if the user has enough money
-        if(currentUser.getBalance() < withdrawal)
-        {
-            Console.WriteLine("Insufficient balance :");
-        }
-        else
-        {
-            currentUser.setBalance(currentUser.getBalance() -withdrawal);
-            Console.WriteLine("You´re good to go! Thank you : ");
-        }
+            System.Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
+            double withdrawal = Double.Parse(Console.ReadLine());
+            //Check if the user has enough money
+            if(currentUser.getBalance() < withdrawal)
+            {
+                Console.WriteLine("Insufficient balance :");
+            }
+            else
+            {
+                currentUser.setBalance(currentUser.getBalance() -withdrawal);
+                Console.WriteLine("You´re good to go! Thank you : ");
+            }
         }
 
         void balance(cardHolder currentUser)
         {
-            System.Console.WriteLine("Current balance: " + currentUser.getBalance());
+            Console.WriteLine("Current balance: " + currentUser.getBalance());
         }
 
         List<cardHolder> cardHolders  = new List<cardHolder>();
@@ -138,12 +139,12 @@ public class cardHolder
                 //check aginst our db. Denna söker av db=databasen och retunerar hela objektet
                 currentUser = cardHolders.FirstOrDefault(a => a.cardNum == debitCardNum);
                 if (currentUser != null) {break;} // denna visa 
-                else { System.Console.WriteLine("Card not recognized. Pleas try again");}
+                else {Console.WriteLine("Card not recognized. Pleas try again");}
             }
-            catch{ Console.WriteLine("Card not recognized. Pleas try again"); }
+            catch {Console.WriteLine("Card not recognized. Pleas try again"); }
         }
         
-        System.Console.WriteLine("Pleas enter you pin: ");
+        Console.WriteLine("Pleas enter you pin: ");
         int userPin= 0;
         while(true)
         {
@@ -156,7 +157,7 @@ public class cardHolder
             catch{Console.WriteLine("Incorrect pin. Pleas try again.");}
         }
 
-        System.Console.WriteLine("Welcome " + currentUser.getFirstName() + " :) ");
+        Console.WriteLine("\nWelcome " + currentUser.getFirstName() + " :) ");
         int option = 0;
         do
         {
@@ -166,16 +167,15 @@ public class cardHolder
                 option = int.Parse(Console.ReadLine());
             }
             catch { }
-            if(option== 1){deposit(currentUser);}
+            if(option == 1) {deposit(currentUser);}
             else if(option == 2) {withdraw(currentUser);}
             else if(option == 3) {balance(currentUser);}
             else if(option == 4) {break;}
             else { option = 0;} //för att vi vill att loopen ska börja om
         }
         while(option != 4); //för nr 4 är exit i menun
-        {
-            System.Console.WriteLine("Thank you! Have a nice day :)");
-        }
+        Console.WriteLine("Thank you! Have a nice day :)");
+        
 
     }
 
