@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sara ATM", "Sara ATM.csproj", "{569BE596-277F-46B5-BDBB-0001207251B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{569BE596-277F-46B5-BDBB-0001207251B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569BE596-277F-46B5-BDBB-0001207251B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569BE596-277F-46B5-BDBB-0001207251B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569BE596-277F-46B5-BDBB-0001207251B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF4F5AFA-4F9A-4F46-8BEA-156732500D16}
+	EndGlobalSection
+EndGlobal
