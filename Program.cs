@@ -104,7 +104,7 @@ public class cardHolder
             else
             {
                 currentUser.setBalance(currentUser.getBalance() -withdrawal);
-                Console.WriteLine("You´re good to go! Thank you : ");
+                Console.WriteLine("You´re good to go! Thank you. Your new balance is: " + currentUser.getBalance());
             }
         }
 
