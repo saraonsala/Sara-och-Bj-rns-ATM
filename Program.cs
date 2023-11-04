@@ -115,7 +115,7 @@ public class cardHolder
 
         List<cardHolder> cardHolders  = new List<cardHolder>();
         cardHolders.Add(new cardHolder("566559515251", 5678, "Victoria","Mellgren", 36555.45));
-        cardHolders.Add(new cardHolder("123456789101", 5678, "Sara","Mellgren", 236555.35));    
+        cardHolders.Add(new cardHolder("123456789101", 1234, "Sara","Mellgren", 236555.35));    
         cardHolders.Add(new cardHolder("259959515253", 6894, "Felica","Mellgren", 655.56));
         cardHolders.Add(new cardHolder("256459515254", 1278, "Stefan","Mellgren", 40555.55));
         cardHolders.Add(new cardHolder("256459515695", 5678, "Snobben","Mellgren", 5.34));
@@ -124,12 +124,12 @@ public class cardHolder
         cardHolders.Add(new cardHolder("256459544258", 5678, "Ulla","Olsson", 78555.55));
 
         //promet user
-        System.Console.WriteLine("****************************");
-        System.Console.WriteLine("Welcome to Sara`s ATM");
+        
+        System.Console.WriteLine("----------Welcome to Sara`s ATM---------");
         System.Console.WriteLine("Pleas enter you debit card: ");
         String debitCardNum = "";
         cardHolder currentUser;
-        System.Console.WriteLine("*****************************");
+        System.Console.WriteLine("-----------------------------------------");
 
         while(true)
         {
@@ -157,7 +157,7 @@ public class cardHolder
             catch{Console.WriteLine("Incorrect pin. Pleas try again.");}
         }
 
-        Console.WriteLine("\nWelcome " + currentUser.getFirstName() + " :) ");
+        Console.WriteLine("\n-----Welcome " + currentUser.getFirstName() + " :) ------- ");
         int option = 0;
         do
         {
