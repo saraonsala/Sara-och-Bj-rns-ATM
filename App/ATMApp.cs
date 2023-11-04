@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.Marshalling;
 
 
 
@@ -72,15 +73,20 @@ public class cardHolder
     
     public static void Main(String[]args)
     {
+        Console.Clear(); //Clears the console screen
+        Console.Title = "Sara ATM App"; //sets the titel of the console window
+        Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
+
+
         void printOptions()
         {
-            System.Console.WriteLine("*************************************************");
+            System.Console.WriteLine("-------------------------------------------------");
             System.Console.WriteLine("Pleas choose from one of the following options...");
             System.Console.WriteLine("1. Deposit");
             System.Console.WriteLine("2. Whitdraw");
             System.Console.WriteLine("3. Show Balance");
             System.Console.WriteLine("4. Exit");
-            System.Console.WriteLine("*************************************************");
+            System.Console.WriteLine("-------------------------------------------------");
         }
 
         void deposit(cardHolder currentUser)
@@ -125,8 +131,8 @@ public class cardHolder
 
         //promet user
         
-        System.Console.WriteLine("----------Welcome to Sara`s ATM---------");
-        System.Console.WriteLine("Pleas enter you debit card: ");
+        System.Console.WriteLine("\n\n----------Welcome to Sara`s ATM App---------\n\n");
+        System.Console.WriteLine("\n\nPleas enter you debit card...\n\n");
         String debitCardNum = "";
         cardHolder currentUser;
         System.Console.WriteLine("-----------------------------------------");
