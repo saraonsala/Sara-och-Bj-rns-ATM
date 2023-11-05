@@ -1,5 +1,13 @@
-﻿public class CardHolder
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+public class CardHolder
 {
+    // fixa så att den skriver ut sek 
+    // fixa så att man kan transfer pengar 
+    // fixa så att kortet spärras efter tre försök 
     string CardNum;
     int Pin;
     string FirstName;
