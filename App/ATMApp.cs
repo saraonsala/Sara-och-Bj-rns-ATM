@@ -8,12 +8,23 @@ public class CardHolder
     // fixa så att den skriver ut sek 
     // fixa så att man kan transfer pengar 
     // fixa så att kortet spärras efter tre försök 
-    string CardNum;
-    int Pin;
-    string FirstName;
-    string LastName;
-    double Balance;
-    int Sara;
+    public string CardNum { get; private set; }
+    public int Pin { get; private set; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
+    private double balance;
+
+    public double Balance
+    {
+        get
+        {
+            return balance;
+        }
+        private set
+        {
+            balance = value;
+        }
+    }
 
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
@@ -23,56 +34,6 @@ public class CardHolder
         LastName = lastName;
         Balance = balance;
     }
-
-    public string GetCardNum()
-    {
-        return CardNum;
-    }
-
-    public int GetPin()
-    {
-        return Pin;
-    }
-
-    public string GetFirstName()
-    {
-        return FirstName;
-    }
-
-    public string GetLastName()
-    {
-        return LastName;
-    }
-
-    public double GetBalance()
-    {
-        return Balance;
-    }
-    public void SetCardNum(string newCardNum)
-    {
-        CardNum = newCardNum;
-    }
-
-    public void SetPin(int newPin)
-    {
-        Pin = newPin;
-    }
-
-    public void SetFirstname(string newFirstName)
-    {
-        FirstName = newFirstName;
-    }
-
-    public void SetLastName(string newLastName)
-    {
-        LastName = newLastName;
-    }
-
-    public void SetBalance(double newBalance)
-    {
-        Balance = newBalance;
-    }
-
 
     public static void Main(String[] args)
     {
@@ -96,31 +57,31 @@ public class CardHolder
         {
             Console.WriteLine("How mutch $$ would you like to deposit: ? ");
             double deposit = Double.Parse(Console.ReadLine() + "");
-            currentUser.SetBalance(currentUser.GetBalance() + deposit);
-            Console.WriteLine("Thank you for you $$. Your new balance is: " + currentUser.GetBalance());
-
+            currentUser.Balance += deposit; // Använd Balance-egenskapen.
+            Console.WriteLine("Thank you for your $$. Your new balance is: " + currentUser.Balance.ToString("C2", new System.Globalization.CultureInfo("sv-SE"))); //denna metoden gör så att saldot blir i svenska kronor 
         }
 
         void withdraw(CardHolder currentUser)
         {
-            System.Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
+            Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
             double withdrawal = Double.Parse(Console.ReadLine() + "");
             //Check if the user has enough money
-            if (currentUser.GetBalance() < withdrawal)
+            if (currentUser.Balance < withdrawal)
             {
                 Console.WriteLine("Insufficient balance :");
             }
             else
             {
-                currentUser.SetBalance(currentUser.GetBalance() - withdrawal);
-                Console.WriteLine("You´re good to go! Thank you. Your new balance is: " + currentUser.GetBalance());
+                currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
+                Console.WriteLine("You're good to go! Thank you. Your new balance is: " + currentUser.Balance.ToString("C2", new System.Globalization.CultureInfo("sv-SE")));
             }
         }
 
-        void balance(CardHolder currentUser)
+         void balance(CardHolder currentUser)
         {
-            Console.WriteLine("Current balance: " + currentUser.GetBalance());
+            Console.WriteLine("Current balance: " + currentUser.Balance.ToString("C2", new System.Globalization.CultureInfo("sv-SE")));
         }
+
 
         List<CardHolder> cardHolderList = new List<CardHolder>();
         cardHolderList.Add(new CardHolder("566559515251", 5678, "Victoria", "Mellgren", 36555.45));
@@ -134,23 +95,23 @@ public class CardHolder
 
         //promet user
 
-        System.Console.WriteLine("\n\n----------Welcome to Sara`s ATM App---------\n\n");
-        System.Console.WriteLine("\n\nPleas enter you debit card...\n\n");
-        String debitCardNum = "";
+        Console.WriteLine("\n\n----------Welcome to Sara`s ATM App---------\n");
+        Console.WriteLine("\nPleas enter you debit card...\n\n");
+        Console.WriteLine("-----------------------------------------");
+        string debitCardNum = "";
         CardHolder currentUser;
-        System.Console.WriteLine("-----------------------------------------");
-
+        
         while (true)
         {
             try
             {
                 debitCardNum = Console.ReadLine() + "";
-                //check aginst our db. Denna söker av db=databasen och retunerar hela objektet
-                currentUser = cardHolderList.FirstOrDefault(a => a.GetCardNum()== debitCardNum);
+                //check aginst our db. FirstOrDefault söker av db=databasen och retunerar hela objektet
+                currentUser = cardHolderList.FirstOrDefault(a => a.CardNum == debitCardNum);
                 if (currentUser != null) { break; } // denna visa 
                 else { Console.WriteLine("Card not recognized. Pleas try again"); }
             }
-            catch { Console.WriteLine("Card not recognized. Pleas try again"); }
+            catch{ Console.WriteLine("Card not recognized. Pleas try again"); }
         }
 
         Console.WriteLine("Pleas enter you pin: ");
@@ -160,13 +121,13 @@ public class CardHolder
             try
             {
                 userPin = int.Parse(Console.ReadLine() + "");
-                if (currentUser.GetPin() == userPin) { break; }
-                else { System.Console.WriteLine("Incorrect pin. Pleas try again."); }
+                if (currentUser.Pin == userPin) { break; }
+                else { Console.WriteLine("Incorrect pin. Pleas try again."); }
             }
             catch { Console.WriteLine("Incorrect pin. Pleas try again."); }
         }
 
-        Console.WriteLine("\n-----Welcome " + currentUser.GetFirstName() + " :) ------- ");
+        Console.WriteLine("\n-----Welcome " + currentUser.FirstName + " :) ------- ");
         int option = 0;
         do
         {
@@ -175,7 +136,7 @@ public class CardHolder
             {
                 option = int.Parse(Console.ReadLine() + "");
             }
-            catch { }
+            catch { option= 0; }
             if (option == 1) { deposit(currentUser); }
             else if (option == 2) { withdraw(currentUser); }
             else if (option == 3) { balance(currentUser); }
@@ -183,7 +144,7 @@ public class CardHolder
             else { option = 0; } //för att vi vill att loopen ska börja om
         }
         while (option != 4); //för nr 4 är exit i menun
-        Console.WriteLine("Thank you! Have a nice day :)");
+        Console.WriteLine("\n\nThank you! Have a nice day :)");
 
 
     }
