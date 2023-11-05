@@ -5,9 +5,10 @@ using System.Linq;
 
 public class CardHolder
 {
-    // fixa så att den skriver ut sek 
-    // fixa så att man kan transfer pengar 
-    // fixa så att kortet spärras efter tre försök 
+    // fixa så att den skriver ut sek: Klar
+    // fixa så att man kan transfer pengar: 
+    // fixa så att kortet spärras efter tre försök:
+    // Lägga alla delar rätt som tex listan/databasen i UI  
     public string CardNum { get; private set; }
     public int Pin { get; private set; }
     public string FirstName { get; private set; }
