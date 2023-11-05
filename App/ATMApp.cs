@@ -1,10 +1,11 @@
-﻿/*public class CardHolder
+﻿public class CardHolder
 {
     string CardNum;
     int Pin;
     string FirstName;
     string LastName;
     double Balance;
+    int Sara;
 
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
@@ -179,7 +180,7 @@
 
     }
 
-}*/
+}
 
 
 
