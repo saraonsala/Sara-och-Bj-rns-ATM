@@ -1,4 +1,4 @@
-﻿public class CardHolder
+﻿/*public class CardHolder
 {
     string CardNum;
     int Pin;
@@ -179,7 +179,7 @@
 
     }
 
-}
+}*/
 
 
 
