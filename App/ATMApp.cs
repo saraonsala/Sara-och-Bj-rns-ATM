@@ -80,7 +80,7 @@ public class CardHolder
 
          void balance(CardHolder currentUser)
         {
-            Console.WriteLine("Current balance: " + currentUser.Balance.ToString("C2", new System.Globalization.CultureInfo("sv-SE")));
+            Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //.ToString("C2", new System.Globalization.CultureInfo("sv-SE")));
         }
 
 
