@@ -151,7 +151,7 @@ public class CardHolder
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 if (attemptsRemaining == 0)
                 {      
-                     System.Console.WriteLine("För många felaktiga besök");
+                     System.Console.WriteLine("För många felaktiga försök. Ditt kort är nu spärrat");
                      cardHolderList.Remove(currentUser); mainMenu();
                       
                     
