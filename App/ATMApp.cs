@@ -31,6 +31,8 @@ public class CardHolder
         }
     }
 
+
+
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
         CardNum = cardNum;
@@ -119,6 +121,8 @@ public class CardHolder
             catch{ Console.WriteLine("Card not recognized. Pleas try again"); }
         }
 
+
+        int attemptsRemaining = 3;
         Console.WriteLine("Pleas enter you pin: ");
         int userPin = 0;
         while (true)
@@ -127,7 +131,9 @@ public class CardHolder
             {
                 userPin = int.Parse(Console.ReadLine() + "");
                 if (currentUser.Pin == userPin) { break; }
-                else { Console.WriteLine("Incorrect pin. Pleas try again."); }
+                else { 
+                attemptsRemaining--;
+                Console.WriteLine($"Incorrect pin. Pleas try again. Attempts remaining:{attemptsRemaining}"); }
             }
             catch { Console.WriteLine("Incorrect pin. Pleas try again."); }
         }
