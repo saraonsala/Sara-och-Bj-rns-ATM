@@ -15,6 +15,8 @@ public class CardHolder
     // Användaren ska kunna ändra sin pin 
     // När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding" 
     /// Ladda bankomaten med pengar 
+    /// Ändra alla varingstexter till röd och ändra till
+        
     // Lägga alla delar rätt som tex listan/databasen i UI  
     public string CardNum { get; private set; }
     public int Pin { get; set; }
