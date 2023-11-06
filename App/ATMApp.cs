@@ -59,7 +59,7 @@ public class CardHolder
             Console.WriteLine("How mutch $$ would you like to deposit: ? ");
             double deposit = Double.Parse(Console.ReadLine() + "");
             currentUser.Balance += deposit; // Använd Balance-egenskapen.
-            Console.WriteLine("Thank you for your $$. Your new balance is: " + currentUser.Balance.ToString("C2", new System.Globalization.CultureInfo("sv-SE"))); //denna metoden gör så att saldot blir i svenska kronor 
+            Console.WriteLine($"Thank you for your $$. Your new balance is: {currentUser.Balance:C}"); 
         }
 
         void withdraw(CardHolder currentUser)
@@ -74,7 +74,7 @@ public class CardHolder
             else
             {
                 currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-                Console.WriteLine("You're good to go! Thank you. Your new balance is: " + currentUser.Balance.ToString("C2", new System.Globalization.CultureInfo("sv-SE")));
+                Console.WriteLine($"You're good to go! Thank you. Your new balance is: {currentUser.Balance:C}");
             }
         }
 
