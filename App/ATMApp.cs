@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Transactions;
 
 
 public class CardHolder
@@ -47,6 +50,16 @@ public class CardHolder
         Console.Clear(); //Clears the console screen
         Console.Title = "Tech Titans"; //sets the titel of the console window
         Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
+
+        void mainMenu()
+        {
+        Console.WriteLine("\n\n----------Welcome to Tech Titans`s ATM App---------\n");
+        Console.WriteLine("\nPleas enter you debit card...\n\n");
+        Console.WriteLine("-----------------------------------------");
+        }
+        mainMenu();
+
+
 
 
         void printOptions()
@@ -101,10 +114,8 @@ public class CardHolder
         cardHolderList.Add(new CardHolder("111", 1234, "Björn", "Lagerblad", 178555.55));
 
         //promet user
-
-        Console.WriteLine("\n\n----------Welcome to Tech Titans`s ATM App---------\n");
-        Console.WriteLine("\nPleas enter you debit card...\n\n");
-        Console.WriteLine("-----------------------------------------");
+        
+    
         string debitCardNum = "";
         CardHolder currentUser;
         
@@ -131,12 +142,23 @@ public class CardHolder
             {
                 userPin = int.Parse(Console.ReadLine() + "");
                 if (currentUser.Pin == userPin) { break; }
-                else { 
+                else{ 
                 attemptsRemaining--;
-                Console.WriteLine($"Incorrect pin. Pleas try again. Attempts remaining:{attemptsRemaining}"); }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Incorrect pin. Pleas try again. Attempts remaining:{attemptsRemaining}");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                if (attemptsRemaining == 0)
+                {      
+                     System.Console.WriteLine("För många felaktiga besök");
+                     cardHolderList.Remove(currentUser); mainMenu();
+                      
+                    
+                }
+                }
             }
+
             catch { Console.WriteLine("Incorrect pin. Pleas try again."); }
-        }
+            }
 
         Console.WriteLine("\n-----Welcome " + currentUser.FirstName + " :) ------- ");
         int option = 0;
@@ -151,11 +173,13 @@ public class CardHolder
             if (option == 1) { deposit(currentUser); }
             else if (option == 2) { withdraw(currentUser); }
             else if (option == 3) { balance(currentUser); }
-            else if (option == 4) { break; }
+            else if (option == 4) {   }
             else { option = 0; } //för att vi vill att loopen ska börja om
         }
         while (option != 4); //för nr 4 är exit i menun
-        Console.WriteLine("\n\nThank you! Have a nice day :)");
+        Console.WriteLine("\n\nThank you! Have a nice day :)"); 
+        mainMenu();
+
 
 
     }
