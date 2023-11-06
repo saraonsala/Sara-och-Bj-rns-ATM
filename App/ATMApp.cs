@@ -5,12 +5,16 @@ using System.Linq;
 
 public class CardHolder
 {
-    // fixa så att den skriver ut sek: Klar
-    // fixa så att man kan transfer pengar: 
-    // fixa så att kortet spärras efter tre försök:
+    // fixa så att den skriver ut sek: Sara Klar
+    // fixa så att man kan transfer pengar: Sara 
+    // fixa så att kortet spärras efter tre försök: Björn 
+    // fixa stavfel: Björn 
+    // Användaren ska kunna ändra sin pin 
+    // När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding" 
+    /// Ladda bankomaten med pengar 
     // Lägga alla delar rätt som tex listan/databasen i UI  
     public string CardNum { get; private set; }
-    public int Pin { get; private set; }
+    public int Pin { get; set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     private double balance;
@@ -39,7 +43,7 @@ public class CardHolder
     public static void Main(String[] args)
     {
         Console.Clear(); //Clears the console screen
-        Console.Title = "Sara ATM App"; //sets the titel of the console window
+        Console.Title = "Tech Titans"; //sets the titel of the console window
         Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
 
 
@@ -92,11 +96,11 @@ public class CardHolder
         cardHolderList.Add(new CardHolder("256459515695", 5678, "Snobben", "Mellgren", 5.34));
         cardHolderList.Add(new CardHolder("256459695256", 3678, "Ingela", "Mellgren", 8900.55));
         cardHolderList.Add(new CardHolder("256579515257", 4068, "Kerstin", "Rundqvist", 557155.25));
-        cardHolderList.Add(new CardHolder("256459544258", 5678, "Ulla", "Olsson", 78555.55));
+        cardHolderList.Add(new CardHolder("111", 1234, "Björn", "Lagerblad", 178555.55));
 
         //promet user
 
-        Console.WriteLine("\n\n----------Welcome to Sara`s ATM App---------\n");
+        Console.WriteLine("\n\n----------Welcome to Tech Titans`s ATM App---------\n");
         Console.WriteLine("\nPleas enter you debit card...\n\n");
         Console.WriteLine("-----------------------------------------");
         string debitCardNum = "";
