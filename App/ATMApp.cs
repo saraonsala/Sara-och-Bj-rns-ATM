@@ -46,7 +46,7 @@ public class CardHolder
         LastName = lastName;
         Balance = balance;
     }
-
+    
     public static void Main(String[] args)
     {
         Console.Clear(); //Clears the console screen
@@ -54,26 +54,39 @@ public class CardHolder
         Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
 
         void mainMenu()
-        {
+    {
         Console.WriteLine("\n\n----------Welcome to Tech Titans`s ATM App---------\n");
         Console.WriteLine("\nPleas enter you debit card...\n\n");
         Console.WriteLine("-----------------------------------------");
-        }
+    }
+    mainMenu();
+
+    
+
+
+        void printOptions()
+    {
+        System.Console.WriteLine("-------------------------------------------------");
+        System.Console.WriteLine("Pleas choose from one of the following options...");
+        System.Console.WriteLine("1. Deposit");
+        System.Console.WriteLine("2. Whitdraw");
+        System.Console.WriteLine("3. Show Balance");
+        System.Console.WriteLine("4. Exit");
+        System.Console.WriteLine("-------------------------------------------------");
+    }
+
+    public static void Main(String[] args)
+    {
+        Console.Clear(); //Clears the console screen
+        Console.Title = "Tech Titans"; //sets the titel of the console window
+        Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
+
         mainMenu();
 
 
 
 
-        void printOptions()
-        {
-            System.Console.WriteLine("-------------------------------------------------");
-            System.Console.WriteLine("Pleas choose from one of the following options...");
-            System.Console.WriteLine("1. Deposit");
-            System.Console.WriteLine("2. Whitdraw");
-            System.Console.WriteLine("3. Show Balance");
-            System.Console.WriteLine("4. Exit");
-            System.Console.WriteLine("-------------------------------------------------");
-        }
+
 
         void deposit(CardHolder currentUser)
         {
@@ -134,9 +147,8 @@ public class CardHolder
             catch{ Console.WriteLine("Card not recognized. Pleas try again"); }
         }
 
-
-        int attemptsRemaining = 3;
         Console.WriteLine("Pleas enter you pin: ");
+        int attemptsRemaining = 3;
         int userPin = 0;
         while (true)
         {
@@ -144,23 +156,25 @@ public class CardHolder
             {
                 userPin = int.Parse(Console.ReadLine() + "");
                 if (currentUser.Pin == userPin) { break; }
-                else{ 
-                attemptsRemaining--;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Incorrect pin. Pleas try again. Attempts remaining:{attemptsRemaining}");
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                if (attemptsRemaining == 0)
-                {      
-                     System.Console.WriteLine("För många felaktiga försök. Ditt kort är nu spärrat");
-                     cardHolderList.Remove(currentUser); mainMenu();
-                      
-                    
-                }
+                else
+                { 
+                    attemptsRemaining--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Incorrect pin. Pleas try again. Attempts remaining:{attemptsRemaining}");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    if (attemptsRemaining == 0)
+                    {      
+                        System.Console.WriteLine("För många felaktiga försök. Ditt kort är nu spärrat");
+                        cardHolderList.Remove(currentUser);
+                        break;
+    
+                        
+                    }
                 }
             }
 
-            catch { Console.WriteLine("Incorrect pin. Pleas try again."); }
-            }
+            catch{ Console.WriteLine("Incorrect pin. Pleas try again."); }
+        }
 
         Console.WriteLine("\n-----Welcome " + currentUser.FirstName + " :) ------- ");
         int option = 0;
