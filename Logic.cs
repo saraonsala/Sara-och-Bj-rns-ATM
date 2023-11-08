@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 public class CardHolder
 {
-    // fixa så att den skriver ut sek: Sara Klar
-    // fixa så att man kan transfer pengar: Sara & Björn  
-    // fixa så att kortet spärras efter tre försök: Björn 
-    // fixa stavfel: Björn 
+    // Fixa så att den skriver ut sek: Sara, Klar
+    // Lägga alla delar rätt som tex listan/databasen i UI: Sara, klart
+    // När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding": Sara, Klart    
+    // Fixa så att man kan transfer pengar: Sara & Björn  
+    // Fixa så att kortet spärras efter tre försök: Björn 
+    // Fixa stavfel: Björn 
     // Användaren ska kunna ändra sin pin 
-    // När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding" 
     /// Ladda bankomaten med pengar 
-    // Lägga alla delar rätt som tex listan/databasen i UI
+
    
 
     public string CardNum { get; set; }
@@ -50,7 +51,10 @@ public class CardHolder
         else
         {
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            Console.WriteLine($"You're good to go! Thank you. Your new balance is: {currentUser.Balance:C}");
+            //Console.Clear(); //Rensar konsolefönstret
+            Console.WriteLine("\n\nLoding.....\n\n");
+            Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
+            Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
         }
     }
 
