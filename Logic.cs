@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 public class CardHolder
 {
     // Fixa så att den skriver ut sek: Sara, Klar
@@ -42,7 +43,7 @@ public class CardHolder
     public void Withdraw(CardHolder currentUser)
     {
         Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
-        double withdrawal = Double.Parse(Console.ReadLine() + "");
+        double withdrawal = Double.Parse(Console.ReadLine() +"");
         //Check if the user has enough money
         if (currentUser.Balance < withdrawal)
         {
@@ -51,7 +52,6 @@ public class CardHolder
         else
         {
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            //Console.Clear(); //Rensar konsolefönstret
             Console.WriteLine("\n\nLoding.....\n\n");
             Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
@@ -63,14 +63,5 @@ public class CardHolder
         Console.WriteLine($"Current balance: {currentUser.Balance:C}"); 
 
     }
-    public void PrintOptions()
-    {
-        Console.WriteLine("-------------------------------------------------");
-        Console.WriteLine("Pleas choose from one of the following options...");
-        Console.WriteLine("1. Deposit");
-        Console.WriteLine("2. Whitdraw");
-        Console.WriteLine("3. Show Balance");
-        Console.WriteLine("4. Exit");
-        Console.WriteLine("-------------------------------------------------");
-    }
+
 }
