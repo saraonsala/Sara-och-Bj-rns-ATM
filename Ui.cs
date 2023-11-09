@@ -22,8 +22,8 @@ public class Program
         while (true)
         {
             mainMenu();
-            string debitCardNum = Console.ReadLine();
-            CardHolder currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum);
+            string? debitCardNum = Console.ReadLine();
+            CardHolder? currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum);
 
             if (currentUser != null) // ifall användaren inte är null alltså om användaren är null så existerar dom inte
             {
