@@ -6,18 +6,20 @@ using System.Linq;
 public class CardHolder
 {   
     // ToDoList
-    // * Fixa så att den skriver ut sek: Sara, Klar
-    // * Lägga alla delar rätt som tex listan/databasen i UI: Sara, klart
-    // * När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding": Sara, Klart    
-    // Fixa så att man kan transfer pengar mellan konton: Sara & Björn 
+    // * Fixa så att den skriver ut sek: Sara,  ***KLAR***
+    // * Lägga alla delar rätt som tex listan/databasen i UI: Sara,  ***KLAR***
+    // * När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding": Sara,  ***KLAR***    
     // * Fixa så att kortet spärras efter tre försök: Björn  ***KLAR***
+
+    // Fixa så att man kan transfer pengar mellan konton: Sara & Björn 
     // Fixa Kontoutdrag/cardHistory // Björn WIP
+    // Användaren ska kunna ändra sin pin: Björn
+    // Ladda bankomaten med pengar : Björn Och Sara 
+    // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara
+    
     // Fixa stavfel: Björn (pågånde/static ;))
-    // Användaren ska kunna ändra sin pin: Björn 
-    /// Ladda bankomaten med pengar : Björn Och Sara
-    // Användaren ska kunna ändra sin pin
-    // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen 
-    /// Ladda bankomaten med pengar 
+    
+
 
    
 
