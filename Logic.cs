@@ -39,33 +39,36 @@ public class CardHolder
        
     public void Deposit(CardHolder currentUser)
     {
-        Console.WriteLine("How mutch $$ would you like to deposit: ? ");
+        Console.WriteLine($"How much money would you like to deposit?\n ");
         double deposit = Double.Parse(Console.ReadLine() + "");
         currentUser.Balance += deposit; // Använd Balance-egenskapen.
-        Console.WriteLine($"Thank you for your $$. Your new balance is: {currentUser.Balance:C}"); 
+        Console.WriteLine($"Thank you for your deposit. Your new balance is: {currentUser.Balance:C}"); 
     }
 
     public void Withdraw(CardHolder currentUser)
     {
-        Console.WriteLine("How mutch $$ would you like to withdraw: ? ");
+        Console.WriteLine("How much money would you like to withdraw?\n ");
         double withdrawal = Double.Parse(Console.ReadLine() +"");
-        //Check if the user has enough money
-        if (currentUser.Balance < withdrawal)
+        if (currentUser.Balance < withdrawal) // är balance minde än withdrawal
         {
             Console.WriteLine("Insufficient balance :");
         }
         else
         {
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            Console.WriteLine("\n\nLoding.....\n\n");
-            Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
+            Console.WriteLine("\n\nLoading...\n\n");
+            Thread.Sleep(1000); //Fördröjning på 1 sek = 1000 milli sekunder
+            Console.WriteLine("\n\nLoading...\n\n");
+            Thread.Sleep(1000);
+            Console.WriteLine("\n\nLoading...\n\n");
+            Thread.Sleep(1000); 
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
         }
     }
 
     public void balance(CardHolder currentUser)
     {
-        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för vluta beroende på dina inställningar
+        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina inställningar
 
     }
  public bool IsCardLocked()

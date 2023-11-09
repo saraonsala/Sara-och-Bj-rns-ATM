@@ -92,7 +92,7 @@ public class Program
 
             }
 
-            if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns och kortet inte är låst
+            if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
             {
                 Console.ForegroundColor = ConsoleColor.Magenta; // magenta färg
 
