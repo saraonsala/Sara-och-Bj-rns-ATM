@@ -16,6 +16,18 @@ public class Program
                 CardHolder currentUser;
                 DataLayer dataLayer = new DataLayer();// // Skapa en instans av DataLayer
 
+                void PrintDotAnimation(int timer = 10)
+                {       
+                        Console.WriteLine("Checking card number an PIN....");
+                        //int timer = 10;
+                        for (int i = 0; i < timer; i++)
+                        {
+                                Console.Write(".");
+                                Thread.Sleep(200);
+                        }
+                        Console.Clear();
+                }
+
                 void mainMenu()
                 {
                         Console.WriteLine("\n\n----------Welcome to Tech Titans`s ATM App---------\n");
@@ -43,7 +55,8 @@ public class Program
                 Console.WriteLine("Pleas enter you pin: ");             
                 int userPin = 0; 
                 while (true)
-                {
+                {       
+                        PrintDotAnimation();
                         try
                         {
                         userPin = int.Parse(Console.ReadLine() + "");
