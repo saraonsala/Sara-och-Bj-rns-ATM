@@ -5,106 +5,78 @@ using System.Security.Cryptography.X509Certificates;
 
 public class Program
 {
-    static void Main(string[] args)
-    {
-        Console.Clear();
-        Console.Title = "Tech Titans";
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        DataLayer dataLayer = new DataLayer();
 
-        void mainMenu()
-        {
-            Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
-            Console.WriteLine("Please enter your debit card...\n\n");
-            Console.WriteLine("-----------------------------------------");
-        }
+        static void Main(String[] args)
+        {             
 
-        while (true)
-        {
-            mainMenu();
-            string? debitCardNum = Console.ReadLine();
-            CardHolder? currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum);
+                Console.Clear(); //Clears the console screen
+                Console.Title = "Tech Titans"; //sets the titel of the console window
+                Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
+                string debitCardNum = "";
+                CardHolder currentUser;
+                DataLayer dataLayer = new DataLayer();// // Skapa en instans av DataLayer
 
-            if (currentUser != null) // ifall användaren inte är null alltså om användaren är null så existerar dom inte
-            {
-                if (currentUser.IsCardLocked()) // går till om kortet är låst (är det under 3 försök)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your card has been locked. Please contact customer support.");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-
-
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("Please enter your PIN:");
-                    int userPin = 0;
-
-                    if (currentUser.WrongPinAttempts < 3) // Kolla så att pin är mindre än 3
-                    {
-                        while (true)
+                void PrintDotAnimation(int timer = 10)
+                {       
+                        Console.WriteLine("Checking card number an PIN....");
+                        //int timer = 10;
+                        for (int i = 0; i < timer; i++)
                         {
-                            try
-                            {
-                                userPin = int.Parse(Console.ReadLine()+"");
-                                Console.ForegroundColor = ConsoleColor.Red;
-
-                                if (currentUser.Pin == userPin)
-                                {
-                                    currentUser.WrongPinAttempts = 0; // Starta om PIN
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Incorrect PIN. Please try again.");
-                                    currentUser.IncreaseWrongPinAttempts();
-
-                                    if (currentUser.IsCardLocked())
-                                    {
-                                        Console.WriteLine("Your card has been locked. Please contact customer support.");
-                                        Console.ForegroundColor = ConsoleColor.Magenta;
-                                        break; // Gå ut ur loop
-                                    }
-                                }
-                            }
-                            catch
-                            {
-                                Console.WriteLine("Incorrect PIN. Please try again.");
-                            }
+                                Console.Write(".");
+                                Thread.Sleep(200);
                         }
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Your card has been locked. Please contact customer support.");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-
-
-                    }
+                        Console.Clear();
                 }
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Card not recognized. Please try again");
-                Console.ForegroundColor = ConsoleColor.Magenta;
 
-            }
+                void mainMenu()
+                {
+                        Console.WriteLine("\n\n----------Welcome to Tech Titans`s ATM App---------\n");
+                        Console.WriteLine("\nPleas enter you debit card...\n\n");
+                        Console.WriteLine("-----------------------------------------");
 
-            if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
-            {
-                Console.ForegroundColor = ConsoleColor.Magenta; // magenta färg
+                }
+        mainMenu();
+                while (true)
+                {
+                try
+                {
+                        debitCardNum = Console.ReadLine() + "";
+                        // Här kommer du åt myCardHolders från dataLayer-instansen
+                        currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum);
+                        Console.ForegroundColor = ConsoleColor.Red; // sets the text color of foregrond color to red
+                        if (currentUser != null) { break; }
+              
+                        else { Console.WriteLine("Card not recognized. Please try again"); }
+                }
+                catch { Console.WriteLine("Card not recognized. Please try again"); }
+                }
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
+                Console.WriteLine("Pleas enter you pin: ");             
+                int userPin = 0; 
+                while (true)
+                {       
+                        PrintDotAnimation();
+                        try
+                        {
+                        userPin = int.Parse(Console.ReadLine() + "");
+                        Console.ForegroundColor = ConsoleColor.Red; // sets the text color of foregrond color to red
+                        if (currentUser.Pin == userPin) { break; }
+                        else { Console.WriteLine("Incorrect pin. Pleas try again."); }
+                        }
+                        catch { Console.WriteLine("Incorrect pin. Pleas try again."); }
+                }
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // sets the text color of foregrond color to magenta
 
                 void PrintOptions()
                 {
                     Console.WriteLine("-------------------------------------------------");
                     Console.WriteLine("Please choose from one of the following options...");
-                    Console.WriteLine("1. Deposit.");
-                    Console.WriteLine("2. Withdraw.");
-                    Console.WriteLine("3. Show Balance.");
-                    System.Console.WriteLine("4. Change PIN.");
-                    Console.WriteLine("0. Exit.");
+                    Console.WriteLine("1. Deposit");
+                    Console.WriteLine("2. Withdraw");
+                    Console.WriteLine("3. Show Balance");
+                    Console.WriteLine("4. Exit");
                     Console.WriteLine("-------------------------------------------------");
                 }
 
@@ -125,7 +97,10 @@ public class Program
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
                 Console.WriteLine("\n\nThank you! Have a nice day :)");
-            }
+
+
+        
+
         }
     }
 }
