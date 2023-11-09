@@ -60,11 +60,10 @@ public class Program
                 {
                     Console.WriteLine("-------------------------------------------------");
                     Console.WriteLine("Please choose from one of the following options...");
-                    Console.WriteLine("1. Deposit.");
-                    Console.WriteLine("2. Withdraw.");
-                    Console.WriteLine("3. Show Balance.");
-                    System.Console.WriteLine("4. Change PIN.");
-                    Console.WriteLine("0. Exit.");
+                    Console.WriteLine("1. Deposit");
+                    Console.WriteLine("2. Withdraw");
+                    Console.WriteLine("3. Show Balance");
+                    Console.WriteLine("4. Exit");
                     Console.WriteLine("-------------------------------------------------");
                 }
 
@@ -81,9 +80,9 @@ public class Program
                     if (option == 1) { currentUser.Deposit(currentUser); }
                     else if (option == 2) { currentUser.Withdraw(currentUser); }
                     else if (option == 3) { currentUser.balance(currentUser); }
-                    else if (option == 4) {System.Console.WriteLine("TEST");}
-                    else if (option == 9) { break; }
-                } while (option != 0); // exit menu 
+                    else if (option == 4) { break; }
+                    else { option = 0; } // loopen startar igen
+                } while (option != 4); // exit menu 
                 Console.WriteLine("\n\nThank you! Have a nice day :)");
 
 
