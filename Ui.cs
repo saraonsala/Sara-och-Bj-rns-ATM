@@ -11,9 +11,9 @@ public class Program
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
-        static void PrintDotAnimation(int timer = 10)
+
+        void PrintDotAnimation(int timer = 10)
         {       
-        Console.WriteLine("Checking card number an PIN....");
         for (int i = 0; i < timer; i++)
         {
                 Console.Write(".");

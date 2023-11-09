@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 public class CardHolder
 {   
@@ -16,7 +17,7 @@ public class CardHolder
     // Användaren ska kunna ändra sin pin: Björn
     // Ladda bankomaten med pengar : Björn Och Sara 
     // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara
-    
+
     // Fixa stavfel: Björn (pågånde/static ;))
     
 
@@ -60,14 +61,13 @@ public class CardHolder
         }
         else
         {
+        
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            Console.WriteLine("\n\nLoading...\n\n");
-            Thread.Sleep(1000); //Fördröjning på 1 sek = 1000 milli sekunder
-            Console.WriteLine("\n\nLoading...\n\n");
-            Thread.Sleep(1000);
-            Console.WriteLine("\n\nLoading...\n\n");
-            Thread.Sleep(1000); 
+            Console.WriteLine("\n\nLoding.....\n\n");
+            //void PrintDotAnimation();
+            Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
+        
         }
     }
 
@@ -76,7 +76,7 @@ public class CardHolder
         Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina inställningar
 
     }
- public bool IsCardLocked()
+    public bool IsCardLocked()
     {
         return WrongPinAttempts >= 3; // om pin är 3 eller under
     }
