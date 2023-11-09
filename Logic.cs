@@ -15,6 +15,9 @@ public class CardHolder
     // Fixa stavfel: Björn (pågånde/static ;))
     // Användaren ska kunna ändra sin pin: Björn 
     /// Ladda bankomaten med pengar : Björn Och Sara
+    // Användaren ska kunna ändra sin pin
+    // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen 
+    /// Ladda bankomaten med pengar 
 
    
 
