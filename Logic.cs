@@ -25,6 +25,8 @@ public class CardHolder
     public double Balance { get; set; }
 
 
+
+    public int WrongPinAttempts { get; set; }
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
         CardNum = cardNum;
@@ -32,6 +34,7 @@ public class CardHolder
         FirstName = firstName;
         LastName = lastName;
         Balance = balance;
+        WrongPinAttempts = 0; //startar med värdet 0 och räknar uppåt
     }     
        
     public void Deposit(CardHolder currentUser)
@@ -62,8 +65,19 @@ public class CardHolder
 
     public void balance(CardHolder currentUser)
     {
-        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); 
+        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för vluta beroende på dina inställningar
 
     }
+ public bool IsCardLocked()
+    {
+        return WrongPinAttempts >= 3; // om pin är 3 eller under
+    }
 
+    public void IncreaseWrongPinAttempts()
+    {
+        WrongPinAttempts++; // öka hur många fel användaren har haft
+    }
 }
+
+
+
