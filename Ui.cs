@@ -31,6 +31,8 @@ public class Program
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Your card has been locked. Please contact customer support.");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+
 
                 }
                 else
@@ -45,7 +47,7 @@ public class Program
                         {
                             try
                             {
-                                userPin = int.Parse(Console.ReadLine());
+                                userPin = int.Parse(Console.ReadLine()+"");
                                 Console.ForegroundColor = ConsoleColor.Red;
 
                                 if (currentUser.Pin == userPin)
@@ -62,7 +64,6 @@ public class Program
                                     {
                                         Console.WriteLine("Your card has been locked. Please contact customer support.");
                                         Console.ForegroundColor = ConsoleColor.Magenta;
-
                                         break; // Gå ut ur loop
                                     }
                                 }
@@ -87,6 +88,8 @@ public class Program
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Card not recognized. Please try again");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+
             }
 
             if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns och kortet inte är låst
