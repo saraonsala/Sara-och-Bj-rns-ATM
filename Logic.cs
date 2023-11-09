@@ -83,19 +83,9 @@ public class CardHolder
     {
         WrongPinAttempts++; // öka hur många fel användaren har haft
     }
-    static void PrintDotAnimation(int timer = 10)
-    {       
-        Console.WriteLine("Checking card number an PIN....");
-        //int timer = 10;
-        for (int i = 0; i < timer; i++)
-        {
-                Console.Write(".");
-                Thread.Sleep(200);
-        }
-        Console.Clear();
-    }
-
+  
 }
+
 
 
 
