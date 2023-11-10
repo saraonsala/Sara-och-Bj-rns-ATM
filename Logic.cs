@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 
   
@@ -72,7 +70,7 @@ public class CardHolder
         {
         
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            Console.WriteLine("\n\nLoading.....\n\n");
+            Console.WriteLine("\n\nLoding.....\n\n");
             //void PrintDotAnimation();
             Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
@@ -95,6 +93,7 @@ public class CardHolder
         WrongPinAttempts++; // öka hur många fel användaren har haft
     }
   
+}
 
 
         public void ChangePin()

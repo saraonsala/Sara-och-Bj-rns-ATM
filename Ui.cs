@@ -144,6 +144,7 @@ namespace UI
                         Console.WriteLine("0. Exit.");
                         Console.WriteLine("-------------------------------------------------");
                     }
+<<<<<<< HEAD
 
                     Console.WriteLine("\n\n-----Welcome " + currentUser.FirstName + " :) -------\n\n");
                     int option = 0;
@@ -165,6 +166,18 @@ namespace UI
             
                 }
             }
+=======
+                    catch { option = 0; }
+                    if (option == 1) { currentUser.Deposit(currentUser); }
+                    else if (option == 2) { currentUser.Withdraw(currentUser); }
+                    else if (option == 3) { currentUser.balance(currentUser); }
+                    else if (option == 4) {System.Console.WriteLine("TEST");}
+                    else if (option == 9) { break; }
+                } while (option != 0); // exit menu 
+                Console.WriteLine("\n\nThank you! Have a nice day :)");
+          
+          }
+>>>>>>> parent of f59babc (working pin change)
         }
     }
 }
