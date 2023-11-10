@@ -32,7 +32,6 @@ public class Program
         {
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
             Console.WriteLine("Please enter your debit card...\n\n");
-            PressEnterToContinue();
             Console.WriteLine("\n\n-----------------------------------------\n\n");
         }
 
