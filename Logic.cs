@@ -112,8 +112,8 @@ public class CardHolder
                 }
                     else 
                     {   
-                        
-                        System.Console.WriteLine("Incorrect PIN. Try again!");
+                        Program.PrintMessage("Incorrect PIN. Try agin.", false);
+
                         }
                     }
                     
