@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 
 public class CardHolder
@@ -63,7 +65,7 @@ public class CardHolder
         {
         
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            Console.WriteLine("\n\nLoding.....\n\n");
+            Console.WriteLine("\n\nLoading.....\n\n");
             //void PrintDotAnimation();
             Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
@@ -86,8 +88,43 @@ public class CardHolder
         WrongPinAttempts++; // öka hur många fel användaren har haft
     }
   
-}
 
 
+        public void ChangePin()
+
+        {   
+            System.Console.WriteLine("Please enter you current PIN:");
+            int currentPin = 0;
+
+            while(true)
+            {
+            try // try/catch om input inte skulle stämma
+            {
+                currentPin = int.Parse(Console.ReadLine()+ "");
+
+                if (currentPin == Pin)
+
+                { 
+                    System.Console.WriteLine("Please enter you new PIN:");
+                    int newPin = int.Parse(Console.ReadLine()+""); 
+                    Pin = newPin; 
+                    System.Console.WriteLine("PIN succesfully changed!");
+                    break;
+                }
+                    else
+                    {
+                        System.Console.WriteLine("Incorrect PIN. Try again!");
+                        }
+                    }
+                    
+
+                    catch // fångar ifall input inte är samma som PIN
+                    {
+                        System.Console.WriteLine("Incorrect PIN. Try again!");
+                    }
+
+            }
+        }
+     }
 
 
