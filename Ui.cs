@@ -16,6 +16,22 @@ public class Program
         {
             Console.WriteLine("\n\n Press Enter to continue...\n");
             Console.ReadLine();
+        }
+
+        void PrintMessage(string msg, bool success = true)
+        {
+            if(success)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            Console.WriteLine(msg);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            PressEnterToContinue();
         }        
 
         void PrintDotAnimation(int timer = 10)
