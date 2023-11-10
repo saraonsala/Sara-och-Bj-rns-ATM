@@ -127,6 +127,14 @@ namespace UI
                     Console.ForegroundColor = ConsoleColor.Cyan;
 
 
+                    Console.WriteLine("-------------------------------------------------");
+                    Console.WriteLine("Please choose from one of the following options...");
+                    Console.WriteLine("1. Deposit.");
+                    Console.WriteLine("2. Withdraw.");
+                    Console.WriteLine("3. Show Balance.");
+                    Console.WriteLine("4. Change PIN.");
+                    Console.WriteLine("0. Exit.");
+                    Console.WriteLine("-------------------------------------------------");
                 }
 
                 if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
@@ -171,13 +179,20 @@ namespace UI
                     if (option == 1) { currentUser.Deposit(currentUser); }
                     else if (option == 2) { currentUser.Withdraw(currentUser); }
                     else if (option == 3) { currentUser.balance(currentUser); }
+<<<<<<< HEAD
                     else if (option == 4) {System.Console.WriteLine("TEST");}
+=======
+                    else if (option == 4) { currentUser.ChangePin();}
+>>>>>>> parent of ed1a8e8 (Transaction history WIP)
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
                 Console.WriteLine("\n\nThank you! Have a nice day :)");
           
           }
+<<<<<<< HEAD
 >>>>>>> parent of f59babc (working pin change)
+=======
+>>>>>>> parent of ed1a8e8 (Transaction history WIP)
         }
     }
 }
