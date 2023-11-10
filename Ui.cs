@@ -136,7 +136,8 @@ public class Program
                     Console.WriteLine("1. Deposit.");
                     Console.WriteLine("2. Withdraw.");
                     Console.WriteLine("3. Show Balance.");
-                    Console.WriteLine("4. Change PIN.");
+                    Console.WriteLine("4. Transaction History");
+                    Console.WriteLine("5. Change PIN.");
                     Console.WriteLine("0. Exit.");
                     Console.WriteLine("-------------------------------------------------");
                 }
@@ -154,12 +155,21 @@ public class Program
                     if (option == 1) { currentUser.Deposit(currentUser); }
                     else if (option == 2) { currentUser.Withdraw(currentUser); }
                     else if (option == 3) { currentUser.balance(currentUser); }
-                    else if (option == 4) { currentUser.ChangePin();}
+                    else if (option == 4) { DisplayTransactionHistory(currentUser);}
+                    else if (option == 5) { currentUser.ChangePin();}
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
                 Console.WriteLine("\n\nThank you! Have a nice day :)");
           
           }
+          void DisplayTransactionHistory(CardHolder currentUser)
+{
+    Console.WriteLine("Transaction History:");
+    foreach (var transaction in currentUser.TransactionHistory)
+    {
+        Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+    }
+}
         }
     }
 }
