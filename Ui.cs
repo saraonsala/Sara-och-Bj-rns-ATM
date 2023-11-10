@@ -180,7 +180,11 @@ namespace UI
                     else if (option == 2) { currentUser.Withdraw(currentUser); }
                     else if (option == 3) { currentUser.balance(currentUser); }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     else if (option == 4) {System.Console.WriteLine("TEST");}
+=======
+                    else if (option == 4) { currentUser.ChangePin();}
+>>>>>>> parent of ed1a8e8 (Transaction history WIP)
 =======
                     else if (option == 4) { currentUser.ChangePin();}
 >>>>>>> parent of ed1a8e8 (Transaction history WIP)
@@ -190,7 +194,10 @@ namespace UI
           
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of f59babc (working pin change)
+=======
+>>>>>>> parent of ed1a8e8 (Transaction history WIP)
 =======
 >>>>>>> parent of ed1a8e8 (Transaction history WIP)
         }
