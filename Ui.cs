@@ -92,7 +92,6 @@ public class Program
                         Console.WriteLine("Your card has been locked. Please contact customer support.");
                         Console.ForegroundColor = ConsoleColor.Magenta;
 
-
                     }
                 }
             }
@@ -115,7 +114,7 @@ public class Program
                     Console.WriteLine("1. Deposit.");
                     Console.WriteLine("2. Withdraw.");
                     Console.WriteLine("3. Show Balance.");
-                    System.Console.WriteLine("4. Change PIN.");
+                    Console.WriteLine("4. Change PIN.");
                     Console.WriteLine("0. Exit.");
                     Console.WriteLine("-------------------------------------------------");
                 }

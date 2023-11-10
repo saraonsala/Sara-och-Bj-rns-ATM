@@ -6,8 +6,7 @@ using System.Linq.Expressions;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 
-public class CardHolder
-{   
+  
     // ToDoList
     // * Fixa så att den skriver ut sek: Sara,  ***KLAR***
     // * Lägga alla delar rätt som tex listan/databasen i UI: Sara,  ***KLAR***
@@ -21,11 +20,13 @@ public class CardHolder
     // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara
 
     // Fixa stavfel: Björn (pågånde/static ;))
+    // Fixa syntax: Sara (pågånde/static ;))
     
 
 
    
-
+public class CardHolder
+{ 
     public string CardNum { get; set; }
     public int Pin { get; set; }
     public string FirstName { get; set; }
