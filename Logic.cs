@@ -110,7 +110,6 @@ public class CardHolder
                 currentPin = int.Parse(Console.ReadLine()+ "");
 
                 if (currentPin == Pin)
-
                 { 
                     System.Console.WriteLine("Please enter you new PIN:");
                     int newPin = int.Parse(Console.ReadLine()+""); 
@@ -118,9 +117,10 @@ public class CardHolder
                     System.Console.WriteLine("PIN succesfully changed!");
                     break;
                 }
-                    else
-                    {
-                        System.Console.WriteLine("Incorrect PIN. Try again!");
+                    else 
+                    {   
+                        Program.PrintMessage("Incorrect PIN. Try agin.", false);
+
                         }
                     }
                     
