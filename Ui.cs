@@ -122,11 +122,23 @@ namespace UI
                 }
                 else
                 {
+<<<<<<< HEAD
+                    Console.WriteLine("-------------------------------------------------");
+                    Console.WriteLine("Please choose from one of the following options...");
+                    Console.WriteLine("1. Deposit.");
+                    Console.WriteLine("2. Withdraw.");
+                    Console.WriteLine("3. Show Balance.");
+                    Console.WriteLine("4. Transaction History");
+                    Console.WriteLine("5. Change PIN.");
+                    Console.WriteLine("0. Exit.");
+                    Console.WriteLine("-------------------------------------------------");
+=======
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Card not recognized. Please try again");
                     Console.ForegroundColor = ConsoleColor.Cyan;
 
 
+>>>>>>> 7bc2ef5 (Lagt in metoden PrintMessage)
                 }
 
                 if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
@@ -136,15 +148,35 @@ namespace UI
                     void PrintOptions()
                     {
                         Console.WriteLine("-------------------------------------------------");
-                    Console.WriteLine("Please choose from one of the following options...");
-                    Console.WriteLine("1. Deposit.");
-                    Console.WriteLine("2. Withdraw.");
-                    Console.WriteLine("3. Show Balance.");
-                    Console.WriteLine("4. Transaction History");
-                    Console.WriteLine("5. Change PIN.");
-                    Console.WriteLine("0. Exit.");
-                    Console.WriteLine("-------------------------------------------------");
+                        Console.WriteLine("Please choose from one of the following options...");
+                        Console.WriteLine("1. Deposit.");
+                        Console.WriteLine("2. Withdraw.");
+                        Console.WriteLine("3. Show Balance.");
+                        Console.WriteLine("4. Change PIN.");
+                        Console.WriteLine("0. Exit.");
+                        Console.WriteLine("-------------------------------------------------");
                     }
+<<<<<<< HEAD
+                    catch { option = 0; }
+                    if (option == 1) { currentUser.Deposit(currentUser); }
+                    else if (option == 2) { currentUser.Withdraw(currentUser); }
+                    else if (option == 3) { currentUser.balance(currentUser); }
+                    else if (option == 4) { DisplayTransactionHistory(currentUser);}
+                    else if (option == 5) { currentUser.ChangePin();}
+                    else if (option == 9) { break; }
+                } while (option != 0); // exit menu 
+                Console.WriteLine("\n\nThank you! Have a nice day :)");
+          
+          }
+          void DisplayTransactionHistory(CardHolder currentUser)
+{
+    Console.WriteLine("Transaction History:");
+    foreach (var transaction in currentUser.TransactionHistory)
+    {
+        Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+    }
+}
+=======
 
                     Console.WriteLine("\n\n-----Welcome " + currentUser.FirstName + " :) -------\n\n");
                     int option = 0;
@@ -159,22 +191,14 @@ namespace UI
                         if (option == 1) { currentUser.Deposit(currentUser); }
                         else if (option == 2) { currentUser.Withdraw(currentUser); }
                         else if (option == 3) { currentUser.balance(currentUser); }
-                        else if (option == 4) { DisplayTransactionHistory(currentUser);}
-                        else if (option == 5) { currentUser.ChangePin();}
+                        else if (option == 4) { currentUser.ChangePin();}
                         else if (option == 9) { break; }
                     } while (option != 0); // exit menu 
                     Console.WriteLine("\n\nThank you! Have a nice day :)");
             
                 }
-                void DisplayTransactionHistory(CardHolder currentUser)
-{
-    Console.WriteLine("Transaction History:");
-    foreach (var transaction in currentUser.TransactionHistory)
-    {
-        Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
-    }
-}
             }
+>>>>>>> 7bc2ef5 (Lagt in metoden PrintMessage)
         }
     }
 }
