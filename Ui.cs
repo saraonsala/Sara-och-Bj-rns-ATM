@@ -16,8 +16,8 @@ public class Program
         {       
         for (int i = 0; i < timer; i++)
         {
-                Console.Write(".");
-                Thread.Sleep(200);
+            Console.Write(".");
+            Thread.Sleep(200);
         }
         Console.Clear();
         }
@@ -40,7 +40,7 @@ public class Program
                 if (currentUser.IsCardLocked()) // går till om kortet är låst (är det under 3 försök)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your card has been locked. Please contact customer support.");
+                    Console.WriteLine("Your card has been locked. Please contact customer support 0730 50 28.");
                     Console.ForegroundColor = ConsoleColor.Magenta;
 
 
