@@ -10,12 +10,10 @@ using System.Security.Cryptography.X509Certificates;
     // * Lägga alla delar rätt som tex listan/databasen i UI: Sara,  ***KLAR***
     // * När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding": Sara,  ***KLAR***    
     // * Fixa så att kortet spärras efter tre försök: Björn  ***KLAR***
-    // * Användaren ska kunna ändra sin pin: Björn ***KLAR***
-    // * Fixa Kontoutdrag/cardHistory // Björn ***KLAR***
 
-
-    // Timestamp.now till något som inte uppdaterar efter nuvarande tid // Björn
     // Fixa så att man kan transfer pengar mellan konton: Sara & Björn 
+    // Fixa Kontoutdrag/cardHistory // Björn WIP
+    // Användaren ska kunna ändra sin pin: Björn
     // Ladda bankomaten med pengar : Björn Och Sara 
     // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara
 
@@ -32,7 +30,7 @@ public class CardHolder
     public string FirstName { get; set; }
     public string LastName { get;  set; }
     public double Balance { get; set; }
-    public List<Transaction> TransactionHistory { get; set; } = new List<Transaction>();
+
 
 
     public int WrongPinAttempts { get; set; }
@@ -52,16 +50,12 @@ public class CardHolder
         double deposit = Double.Parse(Console.ReadLine() + "");
         currentUser.Balance += deposit; // Använd Balance-egenskapen.
         Console.WriteLine($"Thank you for your deposit. Your new balance is: {currentUser.Balance:C}"); 
-        TransactionHistory.Add(new Transaction("Deposit", deposit));
-
     }
 
     public void Withdraw(CardHolder currentUser)
     {
         Console.WriteLine("How much money would you like to withdraw?\n ");
         double withdrawal = Double.Parse(Console.ReadLine() +"");
-        TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
-        
         if (currentUser.Balance < withdrawal) // är balance minde än withdrawal
         {
             Console.WriteLine("Insufficient balance :");
