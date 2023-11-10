@@ -12,6 +12,12 @@ public class Program
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
 
+        void PressEnterToContinue()
+        {
+            Console.WriteLine("\n\n Press Enter to continue...\n");
+            Console.ReadLine();
+        }        
+
         void PrintDotAnimation(int timer = 10)
         {       
         for (int i = 0; i < timer; i++)
@@ -26,7 +32,8 @@ public class Program
         {
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
             Console.WriteLine("Please enter your debit card...\n\n");
-            Console.WriteLine("-----------------------------------------");
+            PressEnterToContinue();
+            Console.WriteLine("\n\n-----------------------------------------\n\n");
         }
 
         while (true)
