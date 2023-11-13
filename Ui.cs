@@ -20,7 +20,7 @@ public class Program
 
         void PrintMessage(string msg, bool success = true)
         {
-            if(success)
+            if (success)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
 
@@ -32,16 +32,16 @@ public class Program
             Console.WriteLine(msg);
             Console.ForegroundColor = ConsoleColor.Cyan;
             PressEnterToContinue();
-        }        
+        }
 
         void PrintDotAnimation(int timer = 10)
-        {       
-        for (int i = 0; i < timer; i++)
         {
-            Console.Write(".");
-            Thread.Sleep(200);
-        }
-        Console.Clear();
+            for (int i = 0; i < timer; i++)
+            {
+                Console.Write(".");
+                Thread.Sleep(200);
+            }
+            Console.Clear();
         }
 
         void mainMenu()
@@ -78,7 +78,7 @@ public class Program
                         {
                             try
                             {
-                                userPin = int.Parse(Console.ReadLine()+"");
+                                userPin = int.Parse(Console.ReadLine() + "");
                                 PrintDotAnimation();
 
                                 Console.ForegroundColor = ConsoleColor.Red;
@@ -154,22 +154,27 @@ public class Program
                     if (option == 1) { currentUser.Deposit(currentUser); }
                     else if (option == 2) { currentUser.Withdraw(currentUser); }
                     else if (option == 3) { currentUser.balance(currentUser); }
-                    else if (option == 4) { DisplayTransactionHistory(currentUser);}
-                    else if (option == 5) { currentUser.ChangePin();}
+                    else if (option == 4) { DisplayTransactionHistory(currentUser); }
+                    else if (option == 5) { currentUser.ChangePin(); }
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
                 Console.WriteLine("\n\nThank you! Have a nice day :)");
-          
-          }
-          void DisplayTransactionHistory(CardHolder currentUser)
-{
-    Console.WriteLine("Transaction History:");
-    foreach (var transaction in currentUser.TransactionHistory)
-    {
-        Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
-    }
-}
+
+            }
+            void DisplayTransactionHistory(CardHolder currentUser)
+            {
+                Console.WriteLine("Transaction History:");
+                foreach (var transaction in currentUser.TransactionHistory)
+                {
+                    Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+                }
+            }
         }
+    }
+
+    private static void NewMethod()
+    {
+        Console.WriteLine();
     }
 }
 

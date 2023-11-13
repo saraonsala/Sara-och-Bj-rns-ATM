@@ -1,6 +1,7 @@
 public class DataLayer
 {
 
+ 
     public List<CardHolder> myCardHolders = new List<CardHolder>();
 
     public DataLayer()
@@ -11,7 +12,7 @@ public class DataLayer
         myCardHolders.Add(new CardHolder("256459515254", 1278, "Stefan", "Mellgren", 40555.55));
         myCardHolders.Add(new CardHolder("256459515695", 5678, "Snobben", "Mellgren", 5.34));
         myCardHolders.Add(new CardHolder("256459695256", 3678, "Ingela", "Mellgren", 8900.55));
-        myCardHolders.Add(new CardHolder("256579515257", 4068, "Kerstin", "Rundqvist", 557155.25));
+        myCardHolders.Add(new CardHolder("222222", 3030, "Emil", "HanEeeSuperSmart", 557155.25));
         myCardHolders.Add(new CardHolder("1", 1, "Björn", "Lagerblad", 178555.55));
 
         myCardHolders[0].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
@@ -54,6 +55,8 @@ public class AtmMachine
         Currency.Add(new AtmMachine(1000));
     }
 }}
+
+
 
 
 
