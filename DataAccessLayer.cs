@@ -44,12 +44,12 @@ public class Transaction
 
 public class AtmMachine
 { 
-    public static double Atmamount{get; set;}
+    public double AtmAmount { get; set; }
     public List<AtmMachine> Currency = new List<AtmMachine>();
     
-    public AtmMachine(double atmamount)
+    public AtmMachine(double atmAmount)
     {
-        Atmamount = Atmamount;
+        AtmAmount = atmAmount;
     }
     
     public AtmMachine()

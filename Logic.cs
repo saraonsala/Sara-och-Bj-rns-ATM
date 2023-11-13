@@ -17,9 +17,10 @@ using System.Threading;
     // * Fixa Kontoutdrag/cardHistory // Björn ***KLAR***
     // *Timestamp.now till något som inte uppdaterar efter nu2varande tid // Björn  ***KLAR***  
     // * När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara ***KLAR***
+    // *Ladda bankomaten med pengar : Björn **KLAR**
+
     
     // Fixa så att man kan transfer pengar mellan konton: Sara  
-    // Ladda bankomaten med pengar : Björn
 
 
     // Fixa stavfel: Björn (pågånde/static ;))
@@ -29,12 +30,15 @@ using System.Threading;
    
 public class CardHolder
 { 
+
     public string CardNum { get; set; }
     public int Pin { get; set; }
     public string FirstName { get; set; }
     public string LastName { get;  set; }
     public double Balance { get; set; }
     public List<Transaction> TransactionHistory { get; set; } = new List<Transaction>();
+    AtmMachine atm = new AtmMachine();
+
 
     
     public int WrongPinAttempts { get; set; }
@@ -68,7 +72,12 @@ public class CardHolder
         {
             Console.WriteLine($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
         }
-   
+       
+        
+         else if (atm.AtmAmount < withdrawal) // om atm har mindre pengar än vad man vill ta ut
+        {
+            Console.WriteLine($"\n\nIsnt all money digital anyway nowadays?\n\n");
+        }
         else
         {
         
@@ -77,6 +86,7 @@ public class CardHolder
             //void PrintDotAnimation();
             Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
+            atm.AtmAmount -= withdrawal; // uppdaterar atmamount(pengar i maskinen) med hur mycket som har tagits ut
         
         }
     }
