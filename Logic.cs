@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 
   
@@ -96,40 +97,36 @@ public class CardHolder
     }
   
 
-        public void ChangePin()
+public void ChangePin()
+{   
+    System.Console.WriteLine("Please enter you current PIN:");
+    int currentPin = 0;
 
-        {   
-            System.Console.WriteLine("Please enter you current PIN:");
-            int currentPin = 0;
+    while(true)
+    {
+        try // try/catch om input inte skulle stämma
+        {
+            currentPin = int.Parse(Console.ReadLine()+ "");
 
-            while(true)
-            {
-            try // try/catch om input inte skulle stämma
-            {
-                currentPin = int.Parse(Console.ReadLine()+ "");
-
-                if (currentPin == Pin)
-
-                { 
-                    System.Console.WriteLine("Please enter you new PIN:");
-                    int newPin = int.Parse(Console.ReadLine()+""); 
-                    Pin = newPin; 
-                    System.Console.WriteLine("PIN succesfully changed!");
-                    break;
-                }
-                    else
-                    {
-                        System.Console.WriteLine("Incorrect PIN. Try again!");
-                        }
-                    }
-                    
-
-                    catch // fångar ifall input inte är samma som PIN
-                    {
-                        System.Console.WriteLine("Incorrect PIN. Try again!");
-                    }
-
+            if (currentPin == Pin)
+            { 
+                System.Console.WriteLine("Please enter you new PIN:");
+                int newPin = int.Parse(Console.ReadLine()+""); 
+                Pin = newPin; 
+                System.Console.WriteLine("PIN succesfully changed!");
+                break;
             }
+            else
+            {
+                System.Console.WriteLine("Incorrect PIN. Try again!");
+            }   
+        }     
+        catch // fångar ifall input inte är samma som PIN
+        {
+            System.Console.WriteLine("Incorrect PIN. Try again!");
         }
-     }
+  
+    }
+}}
+  
  
