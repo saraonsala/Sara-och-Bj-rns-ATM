@@ -87,7 +87,7 @@ public class Program
                         else if (key.Key == ConsoleKey.Backspace && pinBuilder.Length > 0)
                         {
                             pinBuilder.Remove(pinBuilder.Length - 1, 1);
-                            Console.Write("\b \b");
+                            Console.Write("\b \b");//sekvens av tecken som flyttar markören tillbaka med en position i konsolfönstret och sedan skriva över det sista tecknet med ett mellanslag
                         }
                         else if (char.IsDigit(key.KeyChar))
                         {
@@ -114,7 +114,7 @@ public class Program
 
                             if (currentUser.IsCardLocked())
                             {
-                                Console.WriteLine("Your card has been locked. Please contact customer support.");
+                                Console.WriteLine("Your card has been locked. Please contact customer support 0730 50 28.");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
                             }
                         }
