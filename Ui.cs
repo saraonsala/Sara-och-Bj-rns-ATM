@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 public class Program
-{
+{ 
     static void Main(string[] args)
     {
         Console.Clear();
@@ -68,63 +69,69 @@ public class Program
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("Please enter your PIN:");
-                    int userPin = 0;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Please enter your PIN:");
 
-                    if (currentUser.WrongPinAttempts < 3) // Kolla så att pin är mindre än 3
+                if (currentUser.WrongPinAttempts < 3)
+                {
+                    StringBuilder pinBuilder = new StringBuilder();
+
+                    while (true)
                     {
-                        while (true)
+                        ConsoleKeyInfo key = Console.ReadKey(true);
+
+                        if (key.Key == ConsoleKey.Enter)
                         {
-                            try
+                            break;
+                        }
+                        else if (key.Key == ConsoleKey.Backspace && pinBuilder.Length > 0)
+                        {
+                            pinBuilder.Remove(pinBuilder.Length - 1, 1);
+                            Console.Write("\b \b");
+                        }
+                        else if (char.IsDigit(key.KeyChar))
+                        {
+                            pinBuilder.Append(key.KeyChar);
+                            Console.Write("*");
+                        }
+                    }
+
+                    int userPin;
+                    if (int.TryParse(pinBuilder.ToString(), out userPin))
+                    {
+                        PrintDotAnimation();
+                        Console.WriteLine("\n\n");
+                        Console.ForegroundColor = ConsoleColor.Red;
+
+                        if (currentUser.Pin == userPin)
+                        {
+                            currentUser.WrongPinAttempts = 0;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect PIN. Please try again.");
+                            currentUser.IncreaseWrongPinAttempts();
+
+                            if (currentUser.IsCardLocked())
                             {
-                                userPin = int.Parse(Console.ReadLine() + "");
-                                PrintDotAnimation();
-                                Console.WriteLine("\n\n");
-
-                                Console.ForegroundColor = ConsoleColor.Red;
-
-                                if (currentUser.Pin == userPin)
-                                {
-                                    currentUser.WrongPinAttempts = 0; // Starta om PIN
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Incorrect PIN. Please try again.");
-                                    currentUser.IncreaseWrongPinAttempts();
-
-                                    if (currentUser.IsCardLocked())
-                                    {
-                                        Console.WriteLine("Your card has been locked. Please contact customer support.");
-                                        Console.ForegroundColor = ConsoleColor.Magenta;
-                                        break; // Gå ut ur loop
-                                    }
-                                }
-                            }
-                            catch
-                            {
-                                Console.WriteLine("Incorrect PIN. Please try again.");
+                                Console.WriteLine("Your card has been locked. Please contact customer support.");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
                             }
                         }
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Your card has been locked. Please contact customer support.");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-
+                        Console.WriteLine("\nInvalid PIN format. Please try again.");
                     }
                 }
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Card not recognized. Please try again");
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your card has been locked. Please contact customer support.");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                }
 
-            }
-
+                
             if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
             {
                 Console.ForegroundColor = ConsoleColor.Magenta; // magenta färg
@@ -161,17 +168,18 @@ public class Program
                 } while (option != 0); // exit menu 
                 Console.WriteLine("\n\nThank you! Have a nice day :)");
 
-            }
-            void DisplayTransactionHistory(CardHolder currentUser)
-            {
-                Console.WriteLine("Transaction History:");
-                foreach (var transaction in currentUser.TransactionHistory)
+                }
+                void DisplayTransactionHistory(CardHolder currentUser)
                 {
-                    Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+                    Console.WriteLine("Transaction History:");
+                    foreach (var transaction in currentUser.TransactionHistory)
+                    {
+                        Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+                    }
                 }
             }
         }
     }
+}}
 
-}
 
