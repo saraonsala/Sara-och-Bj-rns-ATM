@@ -22,6 +22,7 @@ public class DataLayer
         myCardHolders[5].TransactionHistory.Add(new Transaction("Deposit", 5000.0));
         myCardHolders[6].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
         myCardHolders[7].TransactionHistory.Add(new Transaction("Deposit", 3000.0));
+
     }
     }
 
@@ -37,7 +38,22 @@ public class DataLayer
         Amount = amount;
         Timestamp = DateTime.Now;
     }
-}
+
+public class AtmMachine
+{ 
+    public static double Atmamount{get; set;}
+    public List<AtmMachine> Currency = new List<AtmMachine>();
+
+    public AtmMachine(double atmamount)
+    {
+        Atmamount = Atmamount;
+    }
+    
+    public AtmMachine()
+    {
+        Currency.Add(new AtmMachine(1000));
+    }
+}}
 
 
 

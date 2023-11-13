@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography.X509Certificates;
 
+
   
     // ToDoList
     // * Fixa så att den skriver ut sek: Sara,  ***KLAR***
@@ -32,6 +33,9 @@ public class CardHolder
     public string LastName { get;  set; }
     public double Balance { get; set; }
     public List<Transaction> TransactionHistory { get; set; } = new List<Transaction>();
+
+    
+    
 
     public int WrongPinAttempts { get; set; }
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
@@ -64,6 +68,7 @@ public class CardHolder
         {
             Console.WriteLine("Insufficient balance :");
         }
+   
         else
         {
         
