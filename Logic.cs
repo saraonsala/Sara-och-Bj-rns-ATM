@@ -35,8 +35,6 @@ public class CardHolder
     public List<Transaction> TransactionHistory { get; set; } = new List<Transaction>();
 
     
-    
-
     public int WrongPinAttempts { get; set; }
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
