@@ -15,10 +15,11 @@ using System.Security.Cryptography.X509Certificates;
     // * Användaren ska kunna ändra sin pin: Björn ***KLAR***
     // * Fixa Kontoutdrag/cardHistory // Björn ***KLAR***
     // *Timestamp.now till något som inte uppdaterar efter nu2varande tid // Björn  ***KLAR***  
-
+    // * När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara ***KLAR***
+    
     // Fixa så att man kan transfer pengar mellan konton: Sara  
     // Ladda bankomaten med pengar : Björn
-    // När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara
+
 
     // Fixa stavfel: Björn (pågånde/static ;))
     // Fixa syntax: Sara (pågånde/static ;))
