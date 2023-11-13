@@ -47,8 +47,8 @@ public class Program
         void mainMenu()
         {
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
-            Console.WriteLine("Please enter your debit card...\n\n");
-            Console.WriteLine("\n\n-----------------------------------------\n\n");
+            Console.WriteLine("\n\nPlease enter your debit card...\n\n");
+            Console.WriteLine("\n-----------------------------------------\n");
         }
 
         while (true)
@@ -80,6 +80,7 @@ public class Program
                             {
                                 userPin = int.Parse(Console.ReadLine() + "");
                                 PrintDotAnimation();
+                                Console.WriteLine("\n\n");
 
                                 Console.ForegroundColor = ConsoleColor.Red;
 
@@ -172,9 +173,5 @@ public class Program
         }
     }
 
-    private static void NewMethod()
-    {
-        Console.WriteLine();
-    }
 }
 

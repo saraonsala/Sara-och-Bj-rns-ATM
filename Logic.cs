@@ -64,7 +64,7 @@ public class CardHolder
         
         if (currentUser.Balance < withdrawal) // är balance minde än withdrawal
         {
-            Console.WriteLine($"Insufficient balance.Your balance is {currentUser.Balance:C}");
+            Console.WriteLine($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
         }
    
         else
