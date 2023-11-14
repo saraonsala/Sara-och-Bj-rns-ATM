@@ -40,6 +40,7 @@ public class CardHolder
     public List<Transaction> TransactionHistory { get; set; } = new List<Transaction>();
     AtmMachine atm = new AtmMachine();
     Program program = new Program();
+    Ui ui = new Ui();
 
 
     
@@ -71,7 +72,6 @@ public class CardHolder
         Console.WriteLine("How much money would you like to withdraw?\n ");
         double withdrawal = Double.Parse(Console.ReadLine() +"");
         TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
-        
         if (currentUser.Balance < withdrawal) // är balance minde än withdrawal
         {   
             Console.ForegroundColor = ConsoleColor.Red;
@@ -88,8 +88,8 @@ public class CardHolder
         else
         {
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
-            Console.WriteLine("\n\nLoading.....\n\n");
-            Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
+            Console.WriteLine("\n\nLoading.....");
+            Ui.PrintDotAnimation();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
             atm.AtmAmount -= withdrawal; // uppdaterar atmamount(pengar i maskinen) med hur mycket som har tagits ut

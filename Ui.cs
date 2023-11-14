@@ -15,15 +15,7 @@ public class Program
         DataLayer dataLayer = new DataLayer();
 
 
-        void PrintDotAnimation(int timer = 10)
-        {
-            for (int i = 0; i < timer; i++)
-            {
-                Console.Write(".");
-                Thread.Sleep(200);
-            }
-            Console.Clear();
-        }
+
 
         void mainMenu()
         {
@@ -80,7 +72,7 @@ public class Program
                     if (int.TryParse(pinBuilder.ToString(), out userPin))
                     {   
                         Console.WriteLine("\nChecking PIN\n");
-                        PrintDotAnimation();
+                        Ui.PrintDotAnimation();
                         Console.WriteLine("\n\n");
                         Console.ForegroundColor = ConsoleColor.Red;
 
@@ -164,6 +156,19 @@ public class Program
             }
         }
     }}
+public class Ui
+{
+    public static void PrintDotAnimation(int timer = 10)
+    {
+        for (int i = 0; i < timer; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(200);
+        }
+        Console.Clear();
+    }
+}
+
 
 
 
