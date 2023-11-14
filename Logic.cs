@@ -109,7 +109,15 @@ public class CardHolder
         WrongPinAttempts++; // öka hur många fel användaren har haft
     }
   
-
+  public static void DisplayTransactionHistory(CardHolder currentUser)
+    {
+        Console.WriteLine("Transaction History:");
+        foreach (var transaction in currentUser.TransactionHistory)
+        {
+            Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+        }
+    }
+    
 public void ChangePin()
 {   
     System.Console.WriteLine("Please enter you current PIN:");
@@ -139,7 +147,10 @@ public void ChangePin()
             System.Console.WriteLine("Incorrect PIN. Try again!");
         }
   
+
     }
-}}
+}
+}
+
   
  

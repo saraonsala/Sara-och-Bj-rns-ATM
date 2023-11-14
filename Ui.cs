@@ -13,6 +13,7 @@ public class Program
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
     
+
         void PressEnterToContinue()
         {
             Console.WriteLine("\n\n Press Enter to continue...\n");
@@ -21,7 +22,6 @@ public class Program
 
         void PrintMessage(string msg, bool success = true)
         {
-            
             if (success)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -58,10 +58,9 @@ public class Program
             mainMenu();
             string? debitCardNum = Console.ReadLine();
             CardHolder? currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum);
-           
+
             if (currentUser != null) // ifall användaren inte är null alltså om användaren är null så existerar dom inte
-            {   
-                
+            {
                 if (currentUser.IsCardLocked()) // går till om kortet är låst (är det under 3 försök)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -100,8 +99,7 @@ public class Program
 
                     int userPin;
                     if (int.TryParse(pinBuilder.ToString(), out userPin))
-                    {   
-                        
+                    {
                         PrintDotAnimation();
                         Console.WriteLine("\n\n");
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -123,9 +121,8 @@ public class Program
                         }
                     }
                     else
-                    {   Console.ForegroundColor = ConsoleColor.Red;
+                    {
                         Console.WriteLine("\nInvalid PIN format. Please try again.");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                 }
                 else
@@ -166,24 +163,23 @@ public class Program
                     if (option == 1) { currentUser.Deposit(currentUser); }
                     else if (option == 2) { currentUser.Withdraw(currentUser); }
                     else if (option == 3) { currentUser.balance(currentUser); }
-                    else if (option == 4) { DisplayTransactionHistory(currentUser); }
+                    else if (option == 4) { CardHolder.DisplayTransactionHistory(currentUser); }
                     else if (option == 5) { currentUser.ChangePin(); }
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
-                Console.WriteLine("\n\nThank you! Have a nice day :)");
-
-                }
-                void DisplayTransactionHistory(CardHolder currentUser)
-                {
-                    Console.WriteLine("Transaction History:");
-                    foreach (var transaction in currentUser.TransactionHistory)
-                    {
-                        Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+                        Console.WriteLine("\n\nThank you! Have a nice day :)");
                     }
                 }
             }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Card not found. Please try again.");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+            }
         }
-    }
-}}
+    }}
+
+
 
 
