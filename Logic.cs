@@ -38,6 +38,7 @@ public class CardHolder
     public double Balance { get; set; }
     public List<Transaction> TransactionHistory { get; set; } = new List<Transaction>();
     AtmMachine atm = new AtmMachine();
+    Program program = new Program();
 
 
     
@@ -117,7 +118,7 @@ public void ChangePin()
         try // try/catch om input inte skulle stämma
         {
             currentPin = int.Parse(Console.ReadLine()+ "");
-
+          
             if (currentPin == Pin)
             { 
                 System.Console.WriteLine("Please enter you new PIN:");

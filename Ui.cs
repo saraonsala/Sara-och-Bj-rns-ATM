@@ -6,12 +6,13 @@ using System.Text;
 
 public class Program
 { 
-    static void Main(string[] args)
+    public void Main(string[] args)
     {
         Console.Clear();
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
+    
 
         void PressEnterToContinue()
         {
