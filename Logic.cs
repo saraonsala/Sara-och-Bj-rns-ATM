@@ -78,10 +78,10 @@ public class CardHolder
             Console.WriteLine($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
         }
-        else if (atm.AtmAmount < withdrawal) // om atm har mindre pengar än vad man vill ta ut
+        else if (atm.AtmAmount > withdrawal) // om atm har mindre pengar än vad man vill ta ut
         {   
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"\n\nOut of order.Support 0730 50 28\n\n");
+            Console.WriteLine($"\n\nOut of order.Support 555-12765\n\n");
             Console.ForegroundColor = ConsoleColor.Magenta; 
         }                 
                     
