@@ -12,7 +12,7 @@ public class Program
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
-        string star = "★";
+        //string star = "★";
     
 
         void PressEnterToContinue()
