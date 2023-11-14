@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 
+
   
     // ToDoList
     // * Fixa så att den skriver ut sek: Sara,  ***KLAR***
@@ -70,21 +71,22 @@ public class CardHolder
         TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
         
         if (currentUser.Balance < withdrawal) // är balance minde än withdrawal
-        {
+        {   
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
         }
-       
-        
-         else if (atm.AtmAmount < withdrawal) // om atm har mindre pengar än vad man vill ta ut
-        {
-            Console.WriteLine($"\n\nIsnt all money digital anyway nowadays?\n\n");
-        }
+        else if (atm.AtmAmount < withdrawal) // om atm har mindre pengar än vad man vill ta ut
+        {   
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"\n\nOut of order.Support 0730 50 28\n\n");
+            Console.ForegroundColor = ConsoleColor.Magenta; 
+        }                 
+                    
         else
         {
-        
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
             Console.WriteLine("\n\nLoading.....\n\n");
-            //void PrintDotAnimation();
             Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
             atm.AtmAmount -= withdrawal; // uppdaterar atmamount(pengar i maskinen) med hur mycket som har tagits ut
@@ -118,7 +120,7 @@ public void ChangePin()
         try // try/catch om input inte skulle stämma
         {
             currentPin = int.Parse(Console.ReadLine()+ "");
-          
+           
             if (currentPin == Pin)
             { 
                 System.Console.WriteLine("Please enter you new PIN:");
