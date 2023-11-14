@@ -59,8 +59,10 @@ public class CardHolder
         Console.WriteLine($"How much money would you like to deposit?\n ");
         double deposit = Double.Parse(Console.ReadLine() + "");
         currentUser.Balance += deposit; // Använd Balance-egenskapen.
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"Thank you for your deposit. Your new balance is: {currentUser.Balance:C}"); 
         TransactionHistory.Add(new Transaction("Deposit", deposit));
+        Console.ForegroundColor = ConsoleColor.Magenta;
 
     }
 
@@ -88,16 +90,20 @@ public class CardHolder
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
             Console.WriteLine("\n\nLoading.....\n\n");
             Thread.Sleep(4000); //Fördröjning på 4 sek = 4000 milli sekunder
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
             atm.AtmAmount -= withdrawal; // uppdaterar atmamount(pengar i maskinen) med hur mycket som har tagits ut
+            Console.ForegroundColor = ConsoleColor.Magenta;
         
         }
     }
 
-    public void balance(CardHolder currentUser)
-    {
-        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina inställningar
 
+    public void balance(CardHolder currentUser)
+    {   
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina inställningar
+        Console.ForegroundColor = ConsoleColor.Magenta;
     }
     public bool IsCardLocked()
     {
@@ -114,7 +120,9 @@ public class CardHolder
         Console.WriteLine("Transaction History:");
         foreach (var transaction in currentUser.TransactionHistory)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
+            Console.ForegroundColor = ConsoleColor.Magenta;
         }
     }
     

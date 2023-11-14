@@ -71,7 +71,7 @@ public class Program
                 else
                 {
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Please enter your PIN:");
+                Console.WriteLine("\n\nPlease enter your PIN:\n");
 
                 if (currentUser.WrongPinAttempts < 3)
                 {
@@ -99,7 +99,8 @@ public class Program
 
                     int userPin;
                     if (int.TryParse(pinBuilder.ToString(), out userPin))
-                    {
+                    {   
+                        Console.WriteLine("\nChecking PIN\n");
                         PrintDotAnimation();
                         Console.WriteLine("\n\n");
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -174,7 +175,7 @@ public class Program
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Card not found. Please try again.");
+                Console.WriteLine("\n\nCard not found. Please try again.\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
             }
         }
