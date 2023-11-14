@@ -23,22 +23,6 @@ public class Program
             Console.ReadLine();
         }
 
-        void PrintMessage(string msg, bool success = true)
-        {
-            if (success)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-            Console.WriteLine(msg);
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            PressEnterToContinue();
-        }
-
         void PrintDotAnimation(int timer = 10)
         {
             for (int i = 0; i < timer; i++)
