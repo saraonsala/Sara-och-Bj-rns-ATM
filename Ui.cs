@@ -13,8 +13,8 @@ public class Program
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
-        string star = "★";
-        string snowman = "\u2603";
+       
+       
     
 
         void PressEnterToContinue()
@@ -113,20 +113,23 @@ public class Program
                             currentUser.WrongPinAttempts = 0;
                         }
                         else
-                        {
+                        {    Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Incorrect PIN. Please try again.");
                             currentUser.IncreaseWrongPinAttempts();
 
                             if (currentUser.IsCardLocked())
-                            {
+                            {   
+
                                 Console.WriteLine("Your card has been locked. Please contact customer support 0730 50 28.");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
                             }
                         }
                     }
                     else
-                    {
+                    {   
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nInvalid PIN format. Please try again.");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                 }
                 else
