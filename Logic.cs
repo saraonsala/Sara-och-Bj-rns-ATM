@@ -140,5 +140,32 @@ public void ChangePin()
 }
 }
 
+public class Ui
+{
+    public static void PrintDotAnimation(int timer = 10)
+    {
+        for (int i = 0; i < timer; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(200);
+        }
+        Console.Clear();
+    }
+
+    public static void PrintRedThenMagenta(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(msg);
+        Console.ForegroundColor = ConsoleColor.Magenta;
+    }
+
+    public static void PrintYellowThenMagenta(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(msg);
+        Console.ForegroundColor = ConsoleColor.Magenta;
+    }
+}
+
   
  

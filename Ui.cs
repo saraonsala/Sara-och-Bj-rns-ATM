@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using System.Text;
+using System.Threading;
 
 public class Program
-{ 
+{
     static void Main(string[] args)
-    {   
+    {
         Console.OutputEncoding = Encoding.Unicode;
         Console.Clear();
         Console.Title = "Tech Titans";
@@ -27,18 +26,14 @@ public class Program
             string? debitCardNum = Console.ReadLine();
             CardHolder? currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum);
 
-            if (currentUser != null) // ifall användaren inte är null alltså om användaren är null så existerar dom inte
+            if (currentUser != null)
             {
-                if (currentUser.IsCardLocked()) // går till om kortet är låst (är det under 3 försök)
-                {
-                    Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support 0730 50 28.");
-                }
-                else
-                {
-                Console.WriteLine("\n\nPlease enter your PIN:\n");
+                int attemptsLeft = 3;
 
-                if (currentUser.WrongPinAttempts < 3)
+                while (attemptsLeft > 0)
                 {
+                    Console.WriteLine("\nPlease enter your PIN:");
+
                     StringBuilder pinBuilder = new StringBuilder();
 
                     while (true)
@@ -52,7 +47,7 @@ public class Program
                         else if (key.Key == ConsoleKey.Backspace && pinBuilder.Length > 0)
                         {
                             pinBuilder.Remove(pinBuilder.Length - 1, 1);
-                            Console.Write("\b \b");//sekvens av tecken som flyttar markören tillbaka med en position i konsolfönstret och sedan skriva över det sista tecknet med ett mellanslag
+                            Console.Write("\b \b");
                         }
                         else if (char.IsDigit(key.KeyChar))
                         {
@@ -63,70 +58,68 @@ public class Program
 
                     int userPin;
                     if (int.TryParse(pinBuilder.ToString(), out userPin))
-                    {   
-                        Console.WriteLine("\nChecking PIN\n");
+                    {
+                        Console.WriteLine("\nChecking PIN...");
                         Ui.PrintDotAnimation();
-                        Console.WriteLine("\n\n");
+                        Console.WriteLine("\n");
 
                         if (currentUser.Pin == userPin)
                         {
                             currentUser.WrongPinAttempts = 0;
+                            break;
                         }
                         else
-                        {    
-                            Ui.PrintRedThenMagenta("Incorrect PIN. Please try again.");
-                            currentUser.IncreaseWrongPinAttempts();
-
-                            if (currentUser.IsCardLocked())
-                            {   
-                                Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support 0730 50 28.");
-                            }
+                        {
+                            Ui.PrintRedThenMagenta($"Incorrect PIN. {--attemptsLeft} attempts left. Please try again.");
                         }
                     }
                     else
-                    {   
+                    {
                         Ui.PrintRedThenMagenta("\nInvalid PIN format. Please try again.");
                     }
                 }
-                else
+
+                if (attemptsLeft == 0)
                 {
                     Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support.");
+                    // Additional logic for handling a locked card if needed
                 }
-                
-            if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
-            {
-                void PrintOptions()
+                else
                 {
-                    Console.WriteLine("-------------------------------------------------");
-                    Console.WriteLine("Please choose from one of the following options...");
-                    Console.WriteLine("1. Deposit.");
-                    Console.WriteLine("2. Withdraw.");
-                    Console.WriteLine("3. Show Balance.");
-                    Console.WriteLine("4. Transaction History");
-                    Console.WriteLine("5. Change PIN.");
-                    Console.WriteLine("0. Exit.");
-                    Console.WriteLine("-------------------------------------------------");
-                }
+                    // Continue with the rest of your code
 
-                Console.WriteLine("\n\n-----Welcome ★ " + currentUser.FirstName + " ★ -------\n\n");
-                int option = 0;
-                do
-                {
-                    PrintOptions();
-                    try
+                    void PrintOptions()
                     {
-                        option = int.Parse(Console.ReadLine() + "");
+                        Console.WriteLine("-------------------------------------------------");
+                        Console.WriteLine("Please choose from one of the following options...");
+                        Console.WriteLine("1. Deposit.");
+                        Console.WriteLine("2. Withdraw.");
+                        Console.WriteLine("3. Show Balance.");
+                        Console.WriteLine("4. Transaction History");
+                        Console.WriteLine("5. Change PIN.");
+                        Console.WriteLine("0. Exit.");
+                        Console.WriteLine("-------------------------------------------------");
                     }
-                    catch { option = 0; }
-                    if (option == 1) { currentUser.Deposit(currentUser); }
-                    else if (option == 2) { currentUser.Withdraw(currentUser); }
-                    else if (option == 3) { currentUser.balance(currentUser); }
-                    else if (option == 4) { CardHolder.DisplayTransactionHistory(currentUser); }
-                    else if (option == 5) { currentUser.ChangePin(); }
-                    else if (option == 9) { break; }
-                } while (option != 0); // exit menu 
-                        Ui.PrintYellowThenMagenta("\n\nThank you! Have a nice day (ツ) ");
-                    }
+
+                    Console.WriteLine($"\n\n-----Welcome ★ {currentUser.FirstName} ★ -------\n\n");
+                    int option = 0;
+                    do
+                    {
+                        PrintOptions();
+                        try
+                        {
+                            option = int.Parse(Console.ReadLine() + "");
+                        }
+                        catch { option = 0; }
+                        if (option == 1) { currentUser.Deposit(currentUser); }
+                        else if (option == 2) { currentUser.Withdraw(currentUser); }
+                        else if (option == 3) { currentUser.balance(currentUser); }
+                        else if (option == 4) { CardHolder.DisplayTransactionHistory(currentUser); }
+                        else if (option == 5) { currentUser.ChangePin(); }
+                        else if (option == 9) { break; }
+                    } while (option != 0);
+
+                    Ui.PrintYellowThenMagenta("\n\nThank you! Have a nice day (ツ) ");
                 }
             }
             else
@@ -134,37 +127,6 @@ public class Program
                 Ui.PrintRedThenMagenta("\n\nCard not found. Please try again.\n");
             }
         }
-    }}
-public class Ui
-{
-    public static void PrintDotAnimation(int timer = 10)
-    {
-        for (int i = 0; i < timer; i++)
-        {
-            Console.Write(".");
-            Thread.Sleep(200);
-        }
-        Console.Clear();
     }
-
-    public static void PrintRedThenMagenta(string msg)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(msg);
-        Console.ForegroundColor = ConsoleColor.Magenta;
-   
-    }
-    public static void PrintYellowThenMagenta(string msg)
-    {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine(msg);
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
-    }
-
 }
-
-
-
-
 
