@@ -54,7 +54,7 @@ public class AtmMachine
     
     public AtmMachine()
     {
-        Currency.Add(new AtmMachine(1000));
+        Currency.Add(new AtmMachine(10000000));
     }
 }
 

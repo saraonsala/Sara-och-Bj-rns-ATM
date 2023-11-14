@@ -12,6 +12,7 @@ public class Program
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
+        string star = "★";
     
 
         void PressEnterToContinue()
@@ -151,7 +152,7 @@ public class Program
                     Console.WriteLine("-------------------------------------------------");
                 }
 
-                Console.WriteLine("\n\n-----Welcome " + currentUser.FirstName + " :) -------\n\n");
+                Console.WriteLine("\n\n-----Welcome ★ " + currentUser.FirstName + " ★ -------\n\n");
                 int option = 0;
                 do
                 {
@@ -168,7 +169,8 @@ public class Program
                     else if (option == 5) { currentUser.ChangePin(); }
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
-                        Console.WriteLine("\n\nThank you! Have a nice day :)");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("\n\nThank you! Have a nice day (ツ) ");
                     }
                 }
             }
