@@ -42,8 +42,6 @@ public class CardHolder
     Program program = new Program();
     Ui ui = new Ui();
 
-
-    
     public int WrongPinAttempts { get; set; }
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance)
     {
@@ -53,18 +51,14 @@ public class CardHolder
         LastName = lastName;
         Balance = balance;
         WrongPinAttempts = 0; //startar med värdet 0 och räknar uppåt
-    }     
-       
+    }      
     public void Deposit(CardHolder currentUser)
     {
         Console.WriteLine($"How much money would you like to deposit?\n ");
         double deposit = Double.Parse(Console.ReadLine() + "");
         currentUser.Balance += deposit; // Använd Balance-egenskapen.
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"Thank you for your deposit. Your new balance is: {currentUser.Balance:C}"); 
+        Ui.PrintYellowThenMagenta($"Thank you for your deposit. Your new balance is: {currentUser.Balance:C}"); 
         TransactionHistory.Add(new Transaction("Deposit", deposit));
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
     }
 
     public void Withdraw(CardHolder currentUser)
@@ -74,15 +68,11 @@ public class CardHolder
         TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
         if (currentUser.Balance < withdrawal) // är balance minde än withdrawal
         {   
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Ui.PrintRedThenMagenta($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
         }
         else if (atm.AtmAmount > withdrawal) // om atm har mindre pengar än vad man vill ta ut
         {   
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"\n\nOut of order.Support 555-12765\n\n");
-            Console.ForegroundColor = ConsoleColor.Magenta; 
+            Ui.PrintRedThenMagenta($"\n\nOut of order.Support 555-12765\n\n");
         }                 
                     
         else
@@ -90,19 +80,14 @@ public class CardHolder
             currentUser.Balance -= withdrawal; // Använd Balance-egenskapen.
             Console.WriteLine("\n\nLoading.....");
             Ui.PrintDotAnimation();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
-            atm.AtmAmount -= withdrawal; // uppdaterar atmamount(pengar i maskinen) med hur mycket som har tagits ut
-            Console.ForegroundColor = ConsoleColor.Magenta;
-        
+            Ui.PrintYellowThenMagenta($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n");
+            atm.AtmAmount -= withdrawal; // uppdaterar atmamount(pengar i maskinen) med hur mycket som har tagits ut        
         }
     }
 
     public void balance(CardHolder currentUser)
     {   
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina inställningar
-        Console.ForegroundColor = ConsoleColor.Magenta;
+        Ui.PrintRedThenMagenta($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina inställningar
     }
     public bool IsCardLocked()
     {
@@ -113,23 +98,19 @@ public class CardHolder
     {
         WrongPinAttempts++; // öka hur många fel användaren har haft
     }
-  
   public static void DisplayTransactionHistory(CardHolder currentUser)
     {
         Console.WriteLine("Transaction History:");
         foreach (var transaction in currentUser.TransactionHistory)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Ui.PrintYellowThenMagenta($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
         }
-    }
-    
+    }    
 public void ChangePin()
 {   
-    System.Console.WriteLine("Please enter you current PIN:");
+    Console.WriteLine("Please enter you current PIN:");
     int currentPin;
-
+    
     while(true)
     {
         
@@ -147,15 +128,14 @@ public void ChangePin()
             }
             else
             {
-                System.Console.WriteLine("Incorrect PIN. Try again!");
+                Ui.PrintRedThenMagenta("Incorrect PIN. Try again!");
             }   
         }     
         catch // fångar ifall input inte är samma som PIN
         {
-            System.Console.WriteLine("Incorrect PIN. Try again!");
-        }
-  
+            Ui.PrintRedThenMagenta("Incorrect PIN. Try again!");
 
+        }
     }
 }
 }

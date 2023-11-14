@@ -14,9 +14,6 @@ public class Program
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
 
-
-
-
         void mainMenu()
         {
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
@@ -34,14 +31,10 @@ public class Program
             {
                 if (currentUser.IsCardLocked()) // går till om kortet är låst (är det under 3 försök)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your card has been locked. Please contact customer support 0730 50 28.");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-
+                    Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support 0730 50 28.");
                 }
                 else
                 {
-                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("\n\nPlease enter your PIN:\n");
 
                 if (currentUser.WrongPinAttempts < 3)
@@ -74,44 +67,34 @@ public class Program
                         Console.WriteLine("\nChecking PIN\n");
                         Ui.PrintDotAnimation();
                         Console.WriteLine("\n\n");
-                        Console.ForegroundColor = ConsoleColor.Red;
 
                         if (currentUser.Pin == userPin)
                         {
                             currentUser.WrongPinAttempts = 0;
                         }
                         else
-                        {    Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Incorrect PIN. Please try again.");
+                        {    
+                            Ui.PrintRedThenMagenta("Incorrect PIN. Please try again.");
                             currentUser.IncreaseWrongPinAttempts();
 
                             if (currentUser.IsCardLocked())
                             {   
-
-                                Console.WriteLine("Your card has been locked. Please contact customer support 0730 50 28.");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support 0730 50 28.");
                             }
                         }
                     }
                     else
                     {   
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nInvalid PIN format. Please try again.");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Ui.PrintRedThenMagenta("\nInvalid PIN format. Please try again.");
                     }
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your card has been locked. Please contact customer support.");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support.");
                 }
-
                 
             if (currentUser != null && !currentUser.IsCardLocked()) // om användare finns(inte är null) och kortet inte är låst
             {
-                Console.ForegroundColor = ConsoleColor.Magenta; // magenta färg
-
                 void PrintOptions()
                 {
                     Console.WriteLine("-------------------------------------------------");
@@ -142,17 +125,13 @@ public class Program
                     else if (option == 5) { currentUser.ChangePin(); }
                     else if (option == 9) { break; }
                 } while (option != 0); // exit menu 
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\n\nThank you! Have a nice day (ツ) ");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Ui.PrintYellowThenMagenta("\n\nThank you! Have a nice day (ツ) ");
                     }
                 }
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n\nCard not found. Please try again.\n");
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                Ui.PrintRedThenMagenta("\n\nCard not found. Please try again.\n");
             }
         }
     }}
@@ -167,6 +146,22 @@ public class Ui
         }
         Console.Clear();
     }
+
+    public static void PrintRedThenMagenta(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(msg);
+        Console.ForegroundColor = ConsoleColor.Magenta;
+   
+    }
+    public static void PrintYellowThenMagenta(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(msg);
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+    }
+
 }
 
 
