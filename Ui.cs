@@ -13,15 +13,7 @@ public class Program
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
-       
-       
-    
 
-        void PressEnterToContinue()
-        {
-            Console.WriteLine("\n\n Press Enter to continue...\n");
-            Console.ReadLine();
-        }
 
         void PrintDotAnimation(int timer = 10)
         {
