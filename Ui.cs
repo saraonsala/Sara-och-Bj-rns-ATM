@@ -14,6 +14,7 @@ public class Program
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
         string star = "★";
+        string snowman = "\u2603";
     
 
         void PressEnterToContinue()
@@ -51,7 +52,7 @@ public class Program
         void mainMenu()
         {
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
-            Console.WriteLine("\n\nPlease enter your debit card...\n\n");
+            Console.WriteLine("\n\n Please enter your debit card...\n\n");
             Console.WriteLine("\n-----------------------------------------\n");
         }
 
