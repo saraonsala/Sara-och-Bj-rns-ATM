@@ -12,7 +12,7 @@ public class Program
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
         DataLayer dataLayer = new DataLayer();
-        //string star = "★";
+        string star = "★";
     
 
         void PressEnterToContinue()
@@ -171,6 +171,7 @@ public class Program
                 } while (option != 0); // exit menu 
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("\n\nThank you! Have a nice day (ツ) ");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                 }
             }

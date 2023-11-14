@@ -98,7 +98,6 @@ public class CardHolder
         }
     }
 
-
     public void balance(CardHolder currentUser)
     {   
         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -129,10 +128,11 @@ public class CardHolder
 public void ChangePin()
 {   
     System.Console.WriteLine("Please enter you current PIN:");
-    int currentPin = 0;
+    int currentPin;
 
     while(true)
     {
+        
         try // try/catch om input inte skulle stämma
         {
             currentPin = int.Parse(Console.ReadLine()+ "");
