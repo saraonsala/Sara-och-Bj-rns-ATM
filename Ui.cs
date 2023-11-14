@@ -7,7 +7,8 @@ using System.Text;
 public class Program
 { 
     static void Main(string[] args)
-    {
+    {   
+        Console.OutputEncoding = Encoding.Unicode;
         Console.Clear();
         Console.Title = "Tech Titans";
         Console.ForegroundColor = ConsoleColor.Magenta;
