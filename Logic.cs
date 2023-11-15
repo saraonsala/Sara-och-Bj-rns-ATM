@@ -41,13 +41,14 @@ public class CardHolder //Klassen för kortanvändare
         Console.WriteLine("How much money would you like to withdraw?\n ");
         double withdrawal = Double.Parse(Console.ReadLine() +"");
         TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
+        
         if (currentUser.Balance < withdrawal) // Är balance minde än withdrawal
         {   
             Ui.PrintRedThenMagenta($"\n\nInsufficient balance.Your balance is {currentUser.Balance:C}\n\n");
         }
-        else if (atm.AtmAmount > withdrawal) // Om själva ATM maskinen har mindre pengar än vad användaren vill ta ut.
+        else if (atm.AtmAmount < withdrawal) // Om själva ATM maskinen har mindre pengar än vad användaren vill ta ut.
         {   
-            Ui.PrintRedThenMagenta($"\n\nOut of order.Support 0771-666 666.\n\n");
+            Ui.PrintRedThenMagenta($"\n\nATM out of cash.Support 0771-666 666.\n\n");
         }                            
         else
         {

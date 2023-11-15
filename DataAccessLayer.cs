@@ -57,20 +57,25 @@ public class Transaction //Användarnas korthistorik
         }
 }
 
-public class AtmMachine // Själva bankomaten/ATM 
-{ 
-    public List<AtmMachine> Currency = new List<AtmMachine>(); //ATM´s transaktionslistan. 
+
+
+
+public class AtmMachine // Själva klassen för hur mycket pengar i ATM
+{
     public double AtmAmount { get; set; }
-    
+
     public AtmMachine(double atmAmount)
     {
         AtmAmount = atmAmount;
     }
-    public AtmMachine() //Securitas ladding av bankomaten. 
+
+    public AtmMachine()
     {
-        Currency.Add(new AtmMachine(10000000));
-    }
+        AtmAmount = 10000000; // Hur mycket pengar som finns i automaten
 }
+}
+
+
 
 
 
