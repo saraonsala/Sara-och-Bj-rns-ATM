@@ -98,7 +98,9 @@ public class CardHolder //Klassen för kortanvändare
                     Console.WriteLine("Please enter you new PIN:");
                     int newPin = int.Parse(Console.ReadLine()+""); 
                     Pin = newPin; //Ändrar till den nya pinkoden.
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("PIN succesfully changed!");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     break;
                 }
                 else

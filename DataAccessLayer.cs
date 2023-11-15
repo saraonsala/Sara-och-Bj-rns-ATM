@@ -5,9 +5,9 @@ public class DataLayer
     public DataLayer()
     {
         myCardHolders.Add(new CardHolder("112211", 1122, "Carola", "J-son", 360555.45));
-        myCardHolders.Add(new CardHolder("221122", 2211, "Samir", "Mellgren", 236555.35));
+        myCardHolders.Add(new CardHolder("221122", 2211, "Samir", "Ibrahim", 236555.35));
         myCardHolders.Add(new CardHolder("669966", 6699, "Joel", "Mellgren", 35655.56));
-        myCardHolders.Add(new CardHolder("885522", 8855, "Stefan", "Mellgren", 40555.55));
+        myCardHolders.Add(new CardHolder("885522", 8855, "Kevin", "Mellgren", 40555.55));
         myCardHolders.Add(new CardHolder("987654321", 1122, "Krister", "Trangius", 155.34));
         myCardHolders.Add(new CardHolder("123456789", 2222, "Sara", "Mellgren", 188900.55));
         myCardHolders.Add(new CardHolder("222222", 3030, "Emil", "HanEeeSuperSmart", 557155.25));
