@@ -29,17 +29,17 @@ public class CardHolder //Klassen för kortanvändare
     }      
     public void Deposit(CardHolder currentUser) //Insättning av pengar, kodblock stämmer av med aktuellt saldo samt lägger till transaktionen i listan TransactionHistory. 
     {
-        Console.WriteLine($"How much money would you like to deposit?\n ");
+        Console.WriteLine($"\n\nHow much money would you like to deposit?\n\n");
         double deposit = Double.Parse(Console.ReadLine() + "");
         currentUser.Balance += deposit; // Använd Balance-egenskapen.
-        Ui.PrintYellowThenMagenta($"Thank you for your deposit. Your new balance is: {currentUser.Balance:C}"); 
+        Ui.PrintYellowThenMagenta($"\n\nThank you for your deposit. Your new balance is: {currentUser.Balance:C}\n\n"); 
         TransactionHistory.Add(new Transaction("Deposit", deposit));
     }
 
     public void Withdraw(CardHolder currentUser)//Utag av pengar, kodblock stämmer av med aktuellt saldo samt lägger till transaktionen i listan TransactionHistory. 
     {
-        Console.WriteLine("How much money would you like to withdraw?\n ");
-        double withdrawal = Double.Parse(Console.ReadLine() +"");
+        Console.WriteLine("\n\nHow much money would you like to withdraw?\n\n\n");
+        double withdrawal = Double.Parse(Console.ReadLine()+("\n\n")+"");
         TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
         
         if (currentUser.Balance < withdrawal) // Är balance minde än withdrawal
@@ -62,7 +62,7 @@ public class CardHolder //Klassen för kortanvändare
 
     public void balance(CardHolder currentUser)//Visar användarens saldo i consolen.
     {   
-        Ui.PrintYellowThenMagenta($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina dators regions inställningar.
+        Ui.PrintYellowThenMagenta($"\n\nCurrent balance: {currentUser.Balance:C}\n\n"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina dators regions inställningar.
     }
     public bool IsCardLocked()//Den kollar om kortet är inte är spärrat. 
     {
@@ -75,7 +75,7 @@ public class CardHolder //Klassen för kortanvändare
     }
     public static void DisplayTransactionHistory(CardHolder currentUser)// Den skriver ut transaktionshistoriken för användarens kort.
     {
-        Console.WriteLine("Transaction History:");
+        Console.WriteLine("\n\nTransaction History:\n\n");
         foreach (var transaction in currentUser.TransactionHistory)
         {
             Ui.PrintYellowThenMagenta($"{transaction.Timestamp} - {transaction.Type}: {transaction.Amount:C}");
@@ -83,7 +83,7 @@ public class CardHolder //Klassen för kortanvändare
     }    
     public void ChangePin()//Ändra pin
     {   
-        Console.WriteLine("Please enter you current PIN:");
+        Console.WriteLine("\n\nPlease enter you current PIN:\n\n");
         int currentPin;
         
         while(true)//Om sant 
@@ -95,22 +95,22 @@ public class CardHolder //Klassen för kortanvändare
             
                 if (currentPin == Pin)//Kontrollerar att nuvarande pinkod är korrekt.
                 { 
-                    Console.WriteLine("Please enter you new PIN:");
+                    Console.WriteLine("\n\nPlease enter you new PIN:\n\n");
                     int newPin = int.Parse(Console.ReadLine()+""); 
                     Pin = newPin; //Ändrar till den nya pinkoden.
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("PIN succesfully changed!");
+                    Console.WriteLine("\n\nPIN succesfully changed!\n\n");
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     break;
                 }
                 else
                 {
-                    Ui.PrintRedThenMagenta("Incorrect PIN. Try again!");
+                    Ui.PrintRedThenMagenta("\n\nIncorrect PIN. Try again!\n\n");
                 }   
             }     
             catch // fångar ifall input inte är samma som PIN
             {
-                Ui.PrintRedThenMagenta("Incorrect PIN. Try again!");
+                Ui.PrintRedThenMagenta("\n\nIncorrect PIN. Try again!\n\n");
 
             }
         }

@@ -8,7 +8,6 @@ public class Program
 { 
     static void Main(string[] args)
     {   
-  
         Console.Title = "Tech Titans";//Ändrar titeln på consolfönstret, detta syns bättre i VS Studio
         Console.ForegroundColor = ConsoleColor.Magenta; //Sätter text färgen i consolfönstret
         DataLayer dataLayer = new DataLayer();// Instansierar ett objekt av klassen DataLayer i och med ordet new
@@ -91,6 +90,7 @@ public class Program
                 
             if (currentUser != null && !currentUser.IsCardLocked()) // Om användare finns(inte är null) och kortet inte är låst.
             {
+                
                 void PrintOptions()
                 {
                     Console.WriteLine("-------------------------------------------------");
