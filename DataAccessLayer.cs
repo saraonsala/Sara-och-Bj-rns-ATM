@@ -15,13 +15,30 @@ public class DataLayer
 
         //Användarnas korthistorik. Detta hade i normala fall varit i en databas.
         myCardHolders[0].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
+        myCardHolders[0].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
+        myCardHolders[0].TransactionHistory.Add(new Transaction("Withdraw", 2000.0));
+        myCardHolders[0].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
+        myCardHolders[1].TransactionHistory.Add(new Transaction("Deposit", 5000.0));
+        myCardHolders[1].TransactionHistory.Add(new Transaction("Withdrawal", 3000.0));
         myCardHolders[1].TransactionHistory.Add(new Transaction("Deposit", 5000.0));
         myCardHolders[2].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
+        myCardHolders[2].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
+        myCardHolders[2].TransactionHistory.Add(new Transaction("Deposit", 200.0));
         myCardHolders[3].TransactionHistory.Add(new Transaction("Deposit", 3000.0));
+        myCardHolders[3].TransactionHistory.Add(new Transaction("Deposit", 3000.0));
+        myCardHolders[3].TransactionHistory.Add(new Transaction("Withdrawal", 8000.0));
         myCardHolders[4].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
+        myCardHolders[4].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
+        myCardHolders[4].TransactionHistory.Add(new Transaction("Withdrawal", 1000.0));
         myCardHolders[5].TransactionHistory.Add(new Transaction("Deposit", 5000.0));
+        myCardHolders[5].TransactionHistory.Add(new Transaction("Deposit", 5000.0));
+        myCardHolders[5].TransactionHistory.Add(new Transaction("Withdrawal", 2000.0));
         myCardHolders[6].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
+        myCardHolders[6].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
+        myCardHolders[6].TransactionHistory.Add(new Transaction("Deposit", 8000.0));
         myCardHolders[7].TransactionHistory.Add(new Transaction("Deposit", 3000.0));
+        myCardHolders[7].TransactionHistory.Add(new Transaction("Deposit", 8000.0));
+        myCardHolders[7].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
 
     }
 }
