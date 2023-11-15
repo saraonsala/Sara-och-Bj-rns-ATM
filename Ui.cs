@@ -9,7 +9,6 @@ public class Program
     static void Main(string[] args)
     {   
   
-        //Console.Clear(); // 
         Console.Title = "Tech Titans";//Ändrar titeln på consolfönstret, detta syns bättre i VS Studio
         Console.ForegroundColor = ConsoleColor.Magenta; //Sätter text färgen i consolfönstret
         DataLayer dataLayer = new DataLayer();// Instansierar ett objekt av klassen DataLayer i och med ordet new
@@ -105,7 +104,7 @@ public class Program
                     Console.WriteLine("-------------------------------------------------");
                 }
 
-                Console.WriteLine("\n\n-----Welcome ★ " + currentUser.FirstName + " ★ -------\n\n"); //Användarmenyn.
+                Console.WriteLine("\n\n---------- Welcome ★ " + currentUser.FirstName + " ★ -------\n\n"); //Användarmenyn.
                 int option = 0;
                 do
                 {
@@ -131,7 +130,9 @@ public class Program
                 Ui.PrintRedThenMagenta("\n\nCard not found. Please try again.\n");
             }
         }
-    }}
+    }
+}
+
 public class Ui
 {
     public static void PrintDotAnimation(int timer = 10) //Skapar en ... animation

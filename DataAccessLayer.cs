@@ -57,9 +57,6 @@ public class Transaction //Användarnas korthistorik
         }
 }
 
-
-
-
 public class AtmMachine // Själva klassen för hur mycket pengar i ATM
 {
     public double AtmAmount { get; set; }
@@ -72,7 +69,7 @@ public class AtmMachine // Själva klassen för hur mycket pengar i ATM
     public AtmMachine()
     {
         AtmAmount = 10000000; // Hur mycket pengar som finns i automaten
-}
+    }
 }
 
 

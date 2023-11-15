@@ -62,7 +62,7 @@ public class CardHolder //Klassen för kortanvändare
 
     public void balance(CardHolder currentUser)//Visar användarens saldo i consolen.
     {   
-        Ui.PrintRedThenMagenta($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina dators regions inställningar.
+        Ui.PrintYellowThenMagenta($"Current balance: {currentUser.Balance:C}"); //:C för currency, automatiskt lägger in vad du har för valuta beroende på dina dators regions inställningar.
     }
     public bool IsCardLocked()//Den kollar om kortet är inte är spärrat. 
     {
