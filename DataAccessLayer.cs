@@ -1,8 +1,6 @@
 public class DataLayer
 {
-
- 
-    public List<CardHolder> myCardHolders = new List<CardHolder>();
+    public List<CardHolder> myCardHolders = new List<CardHolder>(); //Lista med kort användare
 
     public DataLayer()
     {
@@ -15,6 +13,7 @@ public class DataLayer
         myCardHolders.Add(new CardHolder("222222", 3030, "Emil", "HanEeeSuperSmart", 557155.25));
         myCardHolders.Add(new CardHolder("1", 1, "Björn", "Lagerblad", 178555.55));
 
+        //Användarnas korthistorik. Detta hade i normala fall varit i en databas.
         myCardHolders[0].TransactionHistory.Add(new Transaction("Deposit", 1000.0));
         myCardHolders[1].TransactionHistory.Add(new Transaction("Deposit", 5000.0));
         myCardHolders[2].TransactionHistory.Add(new Transaction("Withdrawal", 200.0));
@@ -27,11 +26,11 @@ public class DataLayer
     }
 }
 
-public class Transaction
+public class Transaction //Användarnas korthistorik
 {
-    public string Type { get; }
-    public double Amount { get; }
-    public DateTime Timestamp { get; }
+    public string Type { get; }//Utag eller insättning.
+    public double Amount { get; } //Belopp
+    public DateTime Timestamp { get; }// Sätter tid och datum på aktuell transaktion.
 
         public Transaction(string type, double amount)
         {
@@ -41,18 +40,16 @@ public class Transaction
         }
 }
 
-
-public class AtmMachine
+public class AtmMachine // Själva bankomaten/ATM 
 { 
+    public List<AtmMachine> Currency = new List<AtmMachine>(); //ATM´s transaktionslistan. 
     public double AtmAmount { get; set; }
-    public List<AtmMachine> Currency = new List<AtmMachine>();
     
     public AtmMachine(double atmAmount)
     {
         AtmAmount = atmAmount;
     }
-    
-    public AtmMachine()
+    public AtmMachine() //Securitas ladding av bankomaten. 
     {
         Currency.Add(new AtmMachine(10000000));
     }

@@ -1,0 +1,17 @@
+Dokumentation
+  
+    // ToDoList
+    // Vi har gjort mycket annat som inte står med här. Utan dessa punker är det som har uppkommit på våra planeringsmöten. ;)
+
+    // * Fixa så att den skriver ut sek: Sara & Björn  ***KLAR***
+    // * Lägga alla delar rätt som tex listan/databasen i UI: Sara,  ***KLAR***
+    // * När användaren tar ut pengar så så ska det vara en fördröjning på några sek med texten "Loding": Sara,  ***KLAR***    
+    // * Fixa så att kortet spärras efter tre försök: Björn  ***KLAR***
+    // * Användaren ska kunna ändra sin pin: Björn ***KLAR***
+    // * Fixa Kontoutdrag/cardHistory // Björn ***KLAR***
+    // * Timestamp.now till något som inte uppdaterar efter nu2varande tid // Björn  ***KLAR***  
+    // * När användaren skriver in sin pin så ska det se ut som stjärnor på skärmen: Sara ***KLAR***
+    // * Ladda bankomaten med pengar : Björn **KLAR**
+
+    // Fixa stavfel: Björn (pågånde/static ;)
+    // Fixa syntax: Sara (pågånde/static ;)
