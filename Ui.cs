@@ -130,8 +130,8 @@ public class Program
                 Ui.PrintRedThenMagenta("\n\nCard not found. Please try again.\n");
             }
         }
-    }
-}
+    }}
+
 
 public class Ui
 {
