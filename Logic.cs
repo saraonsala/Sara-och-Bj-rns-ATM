@@ -40,7 +40,7 @@ public class CardHolder //Klassen för kortanvändare
     {
         Console.WriteLine("\n\nHow much money would you like to withdraw?\n\n\n");
         double withdrawal = Double.Parse(Console.ReadLine()+("\n\n")+"");
-        TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));
+        
         
         if (currentUser.Balance < withdrawal) // Är balance minde än withdrawal
         {   
@@ -56,7 +56,8 @@ public class CardHolder //Klassen för kortanvändare
             Console.WriteLine("Loading");
             Ui.PrintDotAnimation(); //Animation för att visa att ATM räknar upp de fysiska pengarna.
             Ui.PrintYellowThenMagenta($"\n\nYou're good to go! Thank you. Your new balance is: {currentUser.Balance:C}\n\n"); // Skriver ut användarens aktuella saldo.
-            atm.AtmAmount -= withdrawal; // Uppdaterar ATMamount(pengar i maskinen) med hur mycket som har tagits ut        
+            atm.AtmAmount -= withdrawal; // Uppdaterar ATMamount(pengar i maskinen) med hur mycket som har tagits ut
+            TransactionHistory.Add(new Transaction("Withdrawal", withdrawal));        
         }
     }
 
