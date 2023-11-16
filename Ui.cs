@@ -13,12 +13,16 @@ public class Program
         DataLayer dataLayer = new DataLayer();// Instansierar ett objekt av klassen DataLayer i och med ordet new
         Console.OutputEncoding = Encoding.Unicode; //konverterar UTF så att man kan se alla ASCII karaktärer
 
-        while (true)
-        {   
+        void mainMenu()
+        {
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
             Console.WriteLine("\n\n Please enter your debit card...\n\n");
             Console.WriteLine("\n-----------------------------------------\n");
+        }
 
+        while (true)
+        {   
+            mainMenu();
             string? debitCardNum = Console.ReadLine();//Användarens input och stämmer av med debitCardNR
             CardHolder? currentUser = dataLayer.myCardHolders.FirstOrDefault(a => a.CardNum == debitCardNum); //Den tar använarens input debitCardNum och hämtar hela objektet från listan myCardHolders.
 
@@ -66,7 +70,13 @@ public class Program
                         if (currentUser.Pin == userPin)
                         {
                             currentUser.WrongPinAttempts = 0;
+
+                            if(!currentUser.IsCardLocked())
+                            {
+                                mainMenu(); //ny 231116
+                            }
                         }
+
                         else
                         {    
                             Ui.PrintRedThenMagenta("Incorrect PIN. Please try again.");
@@ -76,7 +86,12 @@ public class Program
                             {   
                                 Ui.PrintRedThenMagenta("Your card has been locked. Please contact customer support 0771-666 666.");
                             }
-                        }
+                           else
+                            {
+                                // Don't proceed to the main menu if the PIN is incorrect
+                                continue; 
+                            }
+                        }    
                     }
                     else
                     {   
