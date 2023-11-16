@@ -14,7 +14,7 @@ public class Program
         Console.OutputEncoding = Encoding.Unicode; //konverterar UTF så att man kan se alla ASCII karaktärer
 
         void mainMenu()
-        {
+        {   
             Console.WriteLine("\n\n----------Welcome to Tech Titans's ATM App---------\n");
             Console.WriteLine("\n\n Please enter your debit card...\n\n");
             Console.WriteLine("\n-----------------------------------------\n");
@@ -118,7 +118,7 @@ public class Program
                     Console.WriteLine("0. Exit.");
                     Console.WriteLine("-------------------------------------------------");
                 }
-
+                Console.Clear();
                 Console.WriteLine("\n\n---------- Welcome ★ " + currentUser.FirstName + " ★ -------\n\n"); //Användarmenyn.
                 int option = 0;
                 do
