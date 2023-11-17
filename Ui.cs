@@ -64,7 +64,7 @@ public class Program
                     if (int.TryParse(pinBuilder.ToString(), out userPin))// Försök omvandla strängen från pinBuilder till ett heltal.Om omvandlingen är framgångsrik, spara det omvandlade värdet i userPin.
                     {   
                         Console.WriteLine("\nChecking PIN\n");
-                        Ui.PrintDotAnimation(); //.... animation
+                        Ui.PrintDotAnimation(); //Prickanimation
                         Console.WriteLine("\n\n");
 
                         if (currentUser.Pin == userPin)
@@ -73,7 +73,7 @@ public class Program
 
                             if(!currentUser.IsCardLocked())
                             {
-                                mainMenu(); //ny 231116
+                                mainMenu(); 
                             }
                         }
 
@@ -88,7 +88,7 @@ public class Program
                             }
                            else
                             {
-                                // Don't proceed to the main menu if the PIN is incorrect
+                                //Gå inte vidare till huvudmenyn om PIN-koden är felaktig
                                 continue; 
                             }
                         }    
@@ -134,7 +134,7 @@ public class Program
                     else if (option == 3) { currentUser.balance(currentUser); }
                     else if (option == 4) { CardHolder.DisplayTransactionHistory(currentUser); }
                     else if (option == 5) { currentUser.ChangePin(); }
-                } while (option != 0); // exit menu 
+                } while (option != 0); // Avsluta menu 
                         Ui.PrintYellowThenMagenta("\n\nThank you! Have a nice day (ツ) ");
                     }
                 }
@@ -145,7 +145,8 @@ public class Program
                 Ui.PrintRedThenMagenta("\n\nCard not found. Please try again.\n");
             }
         }
-    }}
+    }
+}
 
 
 public class Ui

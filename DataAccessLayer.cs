@@ -68,7 +68,7 @@ public class AtmMachine // Själva klassen för hur mycket pengar i ATM
 
     public AtmMachine()
     {
-        AtmAmount = 10000000; // Hur mycket pengar som finns i automaten
+        AtmAmount = 100000; // Hur mycket pengar som finns i automaten
     }
 }
 
